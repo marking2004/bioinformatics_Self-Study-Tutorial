@@ -12,6 +12,9 @@
         else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
           document.documentElement.setAttribute('data-theme', 'dark');
         }
+        var l = localStorage.getItem('site-lang') || 'zh';
+        document.documentElement.setAttribute('data-lang', l);
+        document.documentElement.setAttribute('lang', l === 'en' ? 'en' : 'zh-CN');
       } catch (e) {}
     })();
   </script>
@@ -22,9 +25,10 @@
     <div class="container nav">
       <a class="brand" href="index.html"><span class="brand-mark">◢◤</span> 生信自学指南</a>
       <nav class="nav-links">
-        <a href="index.html">首页</a>
-        <a href="about.html">关于</a>
+        <a href="index.html" class="lang-zh">首页</a><a href="index.html" class="lang-en">Home</a>
+        <a href="about.html" class="lang-zh">关于</a><a href="about.html" class="lang-en">About</a>
         <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
+        <button id="lang-toggle" class="lang-toggle" aria-label="切换语言">EN</button>
         <button id="theme-toggle" class="theme-toggle" aria-label="切换主题" title="切换浅色/深色">◐</button>
       </nav>
     </div>
@@ -33,45 +37,94 @@
   <main>
     <section class="about">
       <div class="container">
-        <h1>关于这个站点</h1>
-        <p>
-          本页由高校生物信息学课程任课教师维护，作为课程配套的<strong>自学参考资料</strong>。
-          内容面向生物和农学等专业的本科生或低年级研究生：用尽量直白的语言和可直接运行的命令 / 代码，把课堂上的知识点拆解成能一步步跟着做的教程。
-        </p>
-        <p>
-          生信的门槛往往不在算法，而在环境：一台 Linux 服务器、一堆看不懂的命令、动辄几个 G 的文件。
-          这个站点想做的，就是帮你在正式开工前，把这些"挡路的东西"先理顺。
-        </p>
+        <h1 class="lang-zh">关于这个站点</h1>
+        <h1 class="lang-en">About this site</h1>
 
-        <h2 style="margin-top:2rem;font-size:1.3rem;">你可以怎么用</h2>
-        <ul>
-          <li><strong>课前预习</strong>：按首页的模块列表，先建立整体印象。</li>
-          <li><strong>动手练习</strong>：课后的命令和代码，自己敲一遍比看十遍有用。</li>
-          <li><strong>课后复习</strong>：当作速查手册，忘了就回来翻对应的模块。</li>
-        </ul>
+        <div class="lang-zh">
+          <p>
+            本页由高校生物信息学课程任课教师维护，作为课程配套的<strong>自学参考资料</strong>。
+            内容面向本科生：用尽量直白的语言和可直接运行的命令 / 代码，把课堂上的知识点拆解成能一步步跟着做的教程。
+          </p>
+          <p>
+            生信的门槛往往不在算法，而在环境：一台 Linux 服务器、一堆看不懂的命令、动辄几个 G 的文件。
+            这个站点想做的，就是帮你在正式开工前，把这些"挡路的东西"先理顺。
+          </p>
 
-        <h2 style="margin-top:2rem;font-size:1.3rem;">内容范围</h2>
-        <ul>
-          <li>Linux 与命令行基础（服务器、文件、管道）</li>
-          <li>序列分析与比对（BLAST、比对算法、一致性）</li>
-          <li>组学数据分析实战（RNA-seq 等流程）</li>
-          <li>用 Python / R 做生信数据可视化</li>
-        </ul>
+          <h2 style="margin-top:2rem;font-size:1.3rem;">你可以怎么用</h2>
+          <ul>
+            <li><strong>课前预习</strong>：按首页的模块列表，先建立整体印象。</li>
+            <li><strong>动手练习</strong>：课后的命令和代码，自己敲一遍比看十遍有用。</li>
+            <li><strong>课后复习</strong>：当作速查手册，忘了就回来翻对应的模块。</li>
+          </ul>
 
-        <h2 style="margin-top:2rem;font-size:1.3rem;">适用对象</h2>
-        <p>
-          生命科学相关专业的本科生或低年级硕士研究生；以及任何想自学生信、但被命令行和分析环境劝退的同学。
-          只要你愿意敲命令，这里的内容都能跟上。
-        </p>
+          <h2 style="margin-top:2rem;font-size:1.3rem;">内容范围</h2>
+          <ul>
+            <li>基础环境：Linux 与命令行、序列比对与 BLAST、RNA-seq 实战</li>
+            <li>序列与进化：多序列比对与可视化、蛋白质分析 / 设计、系统发育分析</li>
+            <li>基因组与组学：核酸序列与基因组学、多组学联合分析</li>
+            <li>实验与应用：分子生物学（引物 / 载体 / CRISPR）、虚拟筛选与药物设计</li>
+            <li>资源：常用数据库、软件与本地工具推荐</li>
+          </ul>
 
-        <h2 style="margin-top:2rem;font-size:1.3rem;">关于我</h2>
-        <p>
-          我是红河学院（中国 云南）生物与食品工程学院教师王传铭。本页内容会随课程推进持续补充。
-          欢迎在 <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
-          上交流、提建议或指出错误。
-        </p>
+          <h2 style="margin-top:2rem;font-size:1.3rem;">适用对象</h2>
+          <p>
+            生物信息学、生命科学相关专业的本科生；以及任何想自学生信、但被命令行和分析环境劝退的同学。
+            只要你愿意敲命令，这里的内容都能跟上。
+          </p>
 
-        <p style="margin-top:2rem;"><a class="btn btn-primary" href="index.html">← 回到课程模块</a></p>
+          <h2 style="margin-top:2rem;font-size:1.3rem;">关于我</h2>
+          <p>
+            我是【在此填写你的姓名 / 职称，例如：某大学生命科学学院 讲师】，研究方向为
+            【在此填写，例如：基因组学与转录组分析】。本页内容会随课程推进持续补充。
+            欢迎在 <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
+            上交流、提建议或指出错误。
+          </p>
+        </div>
+
+        <div class="lang-en">
+          <p>
+            This page is maintained by the instructor of an undergraduate bioinformatics course, as a
+            <strong>self-study companion</strong>. It is written for undergraduates: lectures are broken into
+            step-by-step tutorials in plain language, with runnable commands and code.
+          </p>
+          <p>
+            The hard part of bioinformatics is rarely the algorithm — it is the environment: a Linux server,
+            cryptic commands, and multi-gigabyte files. This site aims to clear those obstacles before you start real work.
+          </p>
+
+          <h2 style="margin-top:2rem;font-size:1.3rem;">How to use it</h2>
+          <ul>
+            <li><strong>Preview</strong>: skim the module list on the home page to get the big picture.</li>
+            <li><strong>Practice</strong>: type the commands and code yourself — far better than reading ten times.</li>
+            <li><strong>Review</strong>: keep it as a quick-reference handbook; revisit a module whenever you forget.</li>
+          </ul>
+
+          <h2 style="margin-top:2rem;font-size:1.3rem;">Scope</h2>
+          <ul>
+            <li>Environment: Linux &amp; CLI, alignment &amp; BLAST, RNA-seq in practice</li>
+            <li>Sequences &amp; evolution: MSA &amp; visualization, protein analysis / design, phylogenetics</li>
+            <li>Genome &amp; omics: nucleic-acid analysis &amp; genomics, multi-omics integration</li>
+            <li>Bench &amp; application: molecular biology (primer / vector / CRISPR), virtual screening &amp; drug design</li>
+            <li>Resources: common databases, software and local-tool recommendations</li>
+          </ul>
+
+          <h2 style="margin-top:2rem;font-size:1.3rem;">Who it is for</h2>
+          <p>
+            Undergraduates in bioinformatics and the life sciences, and anyone who wants to learn bioinformatics but is
+            put off by the command line and analysis environment. If you are willing to type commands, you can follow along.
+          </p>
+
+          <h2 style="margin-top:2rem;font-size:1.3rem;">About me</h2>
+          <p>
+            I am 【fill in your name / title, e.g. Lecturer, School of Life Sciences】, researching
+            【fill in, e.g. genomics and transcriptomics】. Content grows as the course progresses.
+            Feel free to discuss, suggest or report errors on
+            <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>.
+          </p>
+        </div>
+
+        <p style="margin-top:2rem;"><a class="btn btn-primary lang-zh" href="index.html">← 回到课程模块</a></p>
+        <p style="margin-top:2rem;"><a class="btn btn-primary lang-en" href="index.html">← Back to modules</a></p>
       </div>
     </section>
   </main>
