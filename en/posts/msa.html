@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multiple Sequence Alignment &amp; Visualization · 生信自学指南</title>
+  <meta name="description" content="Course companion for undergraduate bioinformatics: command line, sequence analysis, omics and structure prediction as self-study modules." />
+  <link rel="stylesheet" href="/bioinformatics_Self-Study-Tutorial/assets/css/style.css" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t) document.documentElement.setAttribute('data-theme', t);
+        else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="/bioinformatics_Self-Study-Tutorial/en/index.html"><span class="brand-mark">◢◤</span> 生信自学指南</a>
+    <nav class="nav-links">
+      <a href="/bioinformatics_Self-Study-Tutorial/en/index.html">Home</a>
+      <a href="/bioinformatics_Self-Study-Tutorial/en/about.html">About</a>
+      <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
+      
+        <a class="lang-toggle" href="/bioinformatics_Self-Study-Tutorial/posts/msa.html" aria-label="切换语言">中文</a>
+      
+      <button id="theme-toggle" class="theme-toggle" aria-label="切换主题" title="切换浅色/深色">◐</button>
+    </nav>
+  </div>
+</header>
+
+  <main>
+    
+<article class="article">
+  <div class="container">
+    <a class="back-link" href="/bioinformatics_Self-Study-Tutorial/en/index.html">← Back to modules</a>
+    
+    <header class="article-header">
+      <span class="post-tag">MSA</span>
+      <h1>Multiple Sequence Alignment &amp; Visualization</h1>
+      <p class="article-meta">Sequences · ~18 min</p>
+    </header>
+    <div class="article-body">
+      <p>Pairwise alignment compares two sequences; <strong>multiple sequence alignment (MSA)</strong> stacks three or more homologs so you can spot columns conserved across species / families — these often mark functional sites or structural cores. MSA is the prerequisite for phylogenetics, protein families and motif discovery.</p>
+          <h2>1. A typical workflow</h2>
+          <ol>
+            <li>Collect homologs: from the "Alignment &amp; BLAST" module;</li>
+            <li>Deduplicate and unify to FASTA;</li>
+            <li>Run MSA (MAFFT is fast and accurate);</li>
+            <li>Trim low-confidence regions (trimAl);</li>
+            <li>Visualize and interpret (Jalview, sequence logos).</li>
+          </ol>
+          <h2>2. Run MAFFT on the command line</h2>
+          <pre><code># --auto picks a strategy automatically; writes aligned fasta
+mafft --auto seqs.fasta &gt; aln.fasta
+<h1 id="parallelize-for-many-sequences">parallelize for many sequences</h1>
+<p>mafft --auto --thread 8 big.fasta &gt; big_aln.fasta</code></pre>
+<p>Alternatives: ClustalOmega (stable), MUSCLE (fast). EMBL-EBI provides a no-install web MSA tool.</p>
+<h2>3. Visualize with Jalview</h2>
+<p>Jalview is the standard desktop viewer (has a Windows build):</p>
+<ul>
+<li>Open <code>aln.fasta</code> → color by conservation;</li>
+<li><strong>Conservation</strong> view highlights highly conserved columns;</li>
+<li>Compute a <strong>neighbor-joining tree</strong> for a quick cluster;</li>
+<li>Export PNG / EPS for papers.</li>
+</ul>
+<h2>4. Sequence logo: conservation as a picture</h2>
+<p>WebLogo or ggseqlogo (R) draws each column as letters whose height = frequency — taller means more conserved.</p>
+<pre><code># ggseqlogo in R
+library(ggseqlogo)
+p &lt;- ggseqlogo(sequences, method = &quot;bits&quot;)
+plot(p)</code></pre>
+<h2>5. How to read it</h2>
+<ul>
+<li><strong>Fully conserved columns</strong>: likely active sites or binding pockets;</li>
+<li><strong>Blocks of gaps</strong>: often flexible loops; alignment is unreliable — interpret with care;</li>
+<li><strong>Semi-conserved (e.g. K/R swap)</strong>: function kept, sequence changed.</li>
+</ul>
+<blockquote>MSA quality decides everything downstream. Forcing a distant alignment yields &quot;false conservation&quot;. Always eyeball it after aligning — don't trust the software blindly.</blockquote></p>
+
+    </div>
+    
+  </div>
+</article>
+
+  </main>
+  <footer class="site-footer">
+  <div class="container">
+    <p>© <span id="year"></span> 生信自学指南 · 托管于 GitHub Pages</p>
+  </div>
+</footer>
+
+  <script src="/bioinformatics_Self-Study-Tutorial/assets/js/main.js"></script>
+</body>
+</html>
