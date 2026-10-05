@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="light">
+<html lang="zh" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>多组学联合分析：GWAS、通路与基因定位 · 生信自学指南</title>
-  <meta name="description" content="把转录组、基因组、代谢组串起来：GWAS、KEGG 通路富集、未知基因定位与机制推断。" />
+  <meta name="description" content="高校生物信息学课程配套自学资源：把命令行、序列分析、组学、结构预测拆成可自学的模块。" />
+  <link rel="stylesheet" href="/bioinformatics_Self-Study-Tutorial/assets/css/style.css" />
   <script>
     (function () {
       try {
@@ -13,43 +14,39 @@
         else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
           document.documentElement.setAttribute('data-theme', 'dark');
         }
-        var l = localStorage.getItem('site-lang') || 'zh';
-        document.documentElement.setAttribute('data-lang', l);
-        document.documentElement.setAttribute('lang', l === 'en' ? 'en' : 'zh-CN');
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="../assets/css/style.css" />
 </head>
 <body>
   <header class="site-header">
-    <div class="container nav">
-      <a class="brand" href="../index.html"><span class="brand-mark">◢◤</span> 生信自学指南</a>
-      <nav class="nav-links">
-        <a href="../index.html" class="lang-zh">首页</a><a href="../index.html" class="lang-en">Home</a>
-        <a href="../about.html" class="lang-zh">关于</a><a href="../about.html" class="lang-en">About</a>
-        <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
-        <button id="lang-toggle" class="lang-toggle" aria-label="切换语言">EN</button>
-        <button id="theme-toggle" class="theme-toggle" aria-label="切换主题" title="切换浅色/深色">◐</button>
-      </nav>
-    </div>
-  </header>
+  <div class="container nav">
+    <a class="brand" href="/bioinformatics_Self-Study-Tutorial/index.html"><span class="brand-mark">◢◤</span> 生信自学指南</a>
+    <nav class="nav-links">
+      <a href="/bioinformatics_Self-Study-Tutorial/index.html">首页</a>
+      <a href="/bioinformatics_Self-Study-Tutorial/about.html">关于</a>
+      <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
+      
+        <a class="lang-toggle" href="/bioinformatics_Self-Study-Tutorial/en/posts/multi-omics.html" aria-label="切换语言">EN</a>
+      
+      <button id="theme-toggle" class="theme-toggle" aria-label="切换主题" title="切换浅色/深色">◐</button>
+    </nav>
+  </div>
+</header>
 
   <main>
-    <article class="article">
-      <div class="container">
-        <a class="back-link lang-zh" href="../index.html">← 返回课程模块</a>
-        <a class="back-link lang-en" href="../index.html">← Back to modules</a>
-        <header class="article-header">
-          <span class="post-tag lang-zh">多组学</span><span class="post-tag lang-en">Multi-omics</span>
-          <h1 class="lang-zh">多组学联合分析：GWAS、通路与基因定位</h1>
-          <h1 class="lang-en">Multi-omics Integration: GWAS, Pathways &amp; Gene Mapping</h1>
-          <p class="article-meta lang-zh">整合 · 约 22 分钟</p>
-          <p class="article-meta lang-en">Integration · ~22 min</p>
-        </header>
-
-        <div class="article-body lang-zh">
-          <p>单个组学回答一个问题；多组学把"变异—表达—代谢—表型"连成因果链。本模块讲三件最常用的串联：GWAS、通路富集、未知基因定位。</p>
+    
+<article class="article">
+  <div class="container">
+    <a class="back-link" href="/bioinformatics_Self-Study-Tutorial/index.html">← 返回课程模块</a>
+    
+    <header class="article-header">
+      <span class="post-tag">多组学</span>
+      <h1>多组学联合分析：GWAS、通路与基因定位</h1>
+      <p class="article-meta">整合 · 约 22 分钟</p>
+    </header>
+    <div class="article-body">
+      <p>单个组学回答一个问题；多组学把"变异—表达—代谢—表型"连成因果链。本模块讲三件最常用的串联：GWAS、通路富集、未知基因定位。</p>
           <h2>1. GWAS：把变异和性状连起来</h2>
           <p>全基因组关联分析在群体中扫描哪些 SNP 与某性状显著相关。常用 PLINK：</p>
           <pre><code>plink --bfile genotype --pheno trait.txt \
@@ -73,46 +70,19 @@ dotplot(kk)</code></pre>
           <h2>4. 把它们连起来的一张图</h2>
           <p>GWAS 找"哪里有信号" → eQTL / 表达数据指"哪个基因" → KEGG 说"走哪条通路" → 实验验证。多组学不是堆数据，而是用不同证据互相佐证、缩小假设空间。</p>
           <blockquote>多组学最危险的错误是"相关当因果"。一个 SNP 显著，不等于它控制的基因就是机制基因——还需要表达、互作、功能实验来坐实。</blockquote>
-          <p><a href="../index.html">← 返回课程模块</a></p>
-        </div>
 
-        <div class="article-body lang-en">
-          <p>One omics answers one question; multi-omics connects "variant — expression — metabolism — phenotype" into a causal chain. This module covers three most-used links: GWAS, pathway enrichment, and unknown-gene mapping.</p>
-          <h2>1. GWAS: link variants to traits</h2>
-          <p>Genome-wide association scans which SNPs associate with a trait in a population. With PLINK:</p>
-          <pre><code>plink --bfile genotype --pheno trait.txt \
-  --linear --allow-no-sex --out gwas</code></pre>
-          <ul>
-            <li>Plot a <strong>Manhattan plot</strong> (per-site −log10(p); peaks = significant) and a <strong>QQ plot</strong> (check inflation);</li>
-            <li>Significant hits must be <strong>replicated</strong> in an independent cohort, or they are false positives.</li>
-          </ul>
-          <h2>2. Pathway enrichment: from gene list to mechanism</h2>
-          <p>With a set of differential / significant genes, ask "which pathways are they enriched in". Use clusterProfiler (R) for GO and KEGG:</p>
-          <pre><code>library(clusterProfiler)
-kk &lt;- enrichKEGG(gene = ids, organism = "hsa", pvalueCutoff = 0.05)
-dotplot(kk)</code></pre>
-          <p>KEGG shows metabolic / signaling pathways; GO shows biological process / cellular component / molecular function.</p>
-          <h2>3. Mapping unknown genes</h2>
-          <ul>
-            <li><strong>Positional cloning / QTL</strong>: map a trait to a chromosomal interval, then narrow candidates;</li>
-            <li><strong>eQTL</strong>: SNP–expression association bridges "significant locus → which gene is affected";</li>
-            <li><strong>Colocalization</strong>: if a GWAS peak overlaps an eQTL peak, it strongly suggests that gene is the mechanistic mediator.</li>
-          </ul>
-          <h2>4. One picture that connects them</h2>
-          <p>GWAS finds "where the signal is" → eQTL / expression points "which gene" → KEGG says "which pathway" → experiment confirms. Multi-omics is not piling data; it is using different evidence to corroborate and shrink the hypothesis space.</p>
-          <blockquote>The most dangerous error in multi-omics is "correlation as causation". A significant SNP ≠ the gene it regulates is the mechanism gene — expression, interaction and function experiments are still needed.</blockquote>
-          <p><a href="../index.html">← Back to modules</a></p>
-        </div>
-      </div>
-    </article>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>© <span id="year"></span> 生信自学指南 · 由纯 HTML/CSS/JS 构建，托管于 GitHub Pages</p>
     </div>
-  </footer>
+    
+  </div>
+</article>
 
-  <script src="../assets/js/main.js"></script>
+  </main>
+  <footer class="site-footer">
+  <div class="container">
+    <p>© <span id="year"></span> 生信自学指南 · 托管于 GitHub Pages</p>
+  </div>
+</footer>
+
+  <script src="/bioinformatics_Self-Study-Tutorial/assets/js/main.js"></script>
 </body>
 </html>
