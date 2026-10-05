@@ -295,6 +295,23 @@ a:hover { text-decoration: underline; }
   color: var(--text-soft);
 }
 
+.module-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--border, #e2e8f0);
+}
+.module-nav a {
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--accent, #0e7490);
+  text-decoration: none;
+}
+.module-nav a:hover { text-decoration: underline; }
+.module-nav a.next { margin-left: auto; }
+
 /* ---------- About ---------- */
 .about { padding: 3rem 0 4rem; }
 .about h1 { font-size: 2rem; margin: 0 0 1rem; }
