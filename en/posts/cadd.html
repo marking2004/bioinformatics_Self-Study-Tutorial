@@ -25,6 +25,7 @@
     <nav class="nav-links">
       <a href="/bioinformatics_Self-Study-Tutorial/en/index.html">Home</a>
       <a href="/bioinformatics_Self-Study-Tutorial/en/about.html">About</a>
+      <a href="/bioinformatics_Self-Study-Tutorial/en/references.html">References</a>
       <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
       
         <a class="lang-toggle" href="/bioinformatics_Self-Study-Tutorial/posts/cadd.html" aria-label="切换语言">中文</a>
@@ -70,6 +71,11 @@ vina --receptor rec.pdbqt --ligand lig.pdbqt \
           <h2>5. Lead optimization</h2>
           <p>With a hit, use structure to modify substituents, tune pK and selectivity, cycling "design — synthesize — test". Generative models (e.g. REINVENT) now explore chemical space.</p>
           <blockquote>Docking is a filter, not a predictor. Top candidates still need wet validation (SPR / enzymatic / cellular); don't read a docking score as an IC50.</blockquote>
+<h2 id="mini-case">Mini-case</h2>
+<p>Docking primer: use SwissDock web (<a href="http://www.swissdock.ch/">http://www.swissdock.ch/</a>) to upload a protein PDB and a ligand for binding-pocket scores; locally use AutoDock Vina:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>conda install -c bioconda autodock-vina
+</span></span><span style="display:flex;"><span>vina --receptor receptor.pdbqt --ligand ligand.pdbqt --out out.pdbqt --exhaustiveness <span style="color:#ae81ff">8</span>
+</span></span></code></pre></div><p>Observe: results are ranked by binding free energy — more negative is better. For deeper design see the peptide/protein design module.</p>
 
     </div>
     
