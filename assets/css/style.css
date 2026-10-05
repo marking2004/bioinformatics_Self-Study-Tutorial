@@ -226,6 +226,7 @@ a:hover { text-decoration: underline; }
   font-size: .88rem;
 }
 .footer-sub { margin: .3rem 0 0; opacity: .8; }
+.build-note { margin: .35rem 0 0; font-size: .8rem; opacity: .85; }
 
 /* ---------- Article ---------- */
 .article { padding: 2.5rem 0 4rem; }
