@@ -25,6 +25,7 @@
     <nav class="nav-links">
       <a href="/bioinformatics_Self-Study-Tutorial/index.html">首页</a>
       <a href="/bioinformatics_Self-Study-Tutorial/about.html">关于</a>
+      <a href="/bioinformatics_Self-Study-Tutorial/references.html">参考资料</a>
       <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
       
         <a class="lang-toggle" href="/bioinformatics_Self-Study-Tutorial/en/posts/multi-omics.html" aria-label="切换语言">EN</a>
@@ -70,6 +71,21 @@ dotplot(kk)</code></pre>
           <h2>4. 把它们连起来的一张图</h2>
           <p>GWAS 找"哪里有信号" → eQTL / 表达数据指"哪个基因" → KEGG 说"走哪条通路" → 实验验证。多组学不是堆数据，而是用不同证据互相佐证、缩小假设空间。</p>
           <blockquote>多组学最危险的错误是"相关当因果"。一个 SNP 显著，不等于它控制的基因就是机制基因——还需要表达、互作、功能实验来坐实。</blockquote>
+<h2 id="迷你实战">迷你实战</h2>
+<p>拿一个表达矩阵做 PCA，<strong>R 与 Python 任选其一</strong>：</p>
+<p>R（PCA，factoextra）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(FactoMineR); <span style="color:#a6e22e">library</span>(factoextra)
+</span></span><span style="display:flex;"><span>mat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">read.csv</span>(<span style="color:#e6db74">&#34;expr_matrix.csv&#34;</span>, row.names <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>pca <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">PCA</span>(<span style="color:#a6e22e">t</span>(mat), graph <span style="color:#f92672">=</span> <span style="color:#66d9ef">FALSE</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fviz_pca_ind</span>(pca)
+</span></span></code></pre></div><p>Python（PCA，sklearn）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.decomposition <span style="color:#f92672">import</span> PCA
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span>mat <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;expr_matrix.csv&#34;</span>, index_col <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>pcs <span style="color:#f92672">=</span> PCA(n_components <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>)<span style="color:#f92672">.</span>fit_transform(mat<span style="color:#f92672">.</span>T)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>scatter(pcs[:, <span style="color:#ae81ff">0</span>], pcs[:, <span style="color:#ae81ff">1</span>]); plt<span style="color:#f92672">.</span>show()
+</span></span></code></pre></div><p>观察：样本按处理/组织聚成簇，说明批次或生物学效应明显。差异表达见各模块的 R/Python 片段。</p>
 
     </div>
     
