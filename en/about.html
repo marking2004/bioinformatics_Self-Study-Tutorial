@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About this site · 生信自学指南</title>
+  <meta name="description" content="Course companion for undergraduate bioinformatics: command line, sequence analysis, omics and structure prediction as self-study modules." />
+  <link rel="stylesheet" href="/bioinformatics_Self-Study-Tutorial/assets/css/style.css" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t) document.documentElement.setAttribute('data-theme', t);
+        else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="/bioinformatics_Self-Study-Tutorial/en/index.html"><span class="brand-mark">◢◤</span> 生信自学指南</a>
+    <nav class="nav-links">
+      <a href="/bioinformatics_Self-Study-Tutorial/en/index.html">Home</a>
+      <a href="/bioinformatics_Self-Study-Tutorial/en/about.html">About</a>
+      <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
+      
+        <a class="lang-toggle" href="/bioinformatics_Self-Study-Tutorial/about.html" aria-label="切换语言">中文</a>
+      
+      <button id="theme-toggle" class="theme-toggle" aria-label="切换主题" title="切换浅色/深色">◐</button>
+    </nav>
+  </div>
+</header>
+
+  <main>
+    
+<article class="about">
+  <div class="container">
+    <a class="back-link" href="/bioinformatics_Self-Study-Tutorial/en/index.html">← Back to modules</a>
+    
+    <h1>About this site</h1>
+    <div class="article-body">
+      <p>
+            This page is maintained by the instructor of an undergraduate bioinformatics course, as a
+            <strong>self-study companion</strong>. It is written for undergraduates: lectures are broken into
+            step-by-step tutorials in plain language, with runnable commands and code.
+          </p>
+          <p>
+            The hard part of bioinformatics is rarely the algorithm — it is the environment: a Linux server,
+            cryptic commands, and multi-gigabyte files. This site aims to clear those obstacles before you start real work.
+          </p>
+<pre><code>      &lt;h2 style=&quot;margin-top:2rem;font-size:1.3rem;&quot;&gt;How to use it&lt;/h2&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;strong&gt;Preview&lt;/strong&gt;: skim the module list on the home page to get the big picture.&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Practice&lt;/strong&gt;: type the commands and code yourself — far better than reading ten times.&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Review&lt;/strong&gt;: keep it as a quick-reference handbook; revisit a module whenever you forget.&lt;/li&gt;
+      &lt;/ul&gt;
+
+      &lt;h2 style=&quot;margin-top:2rem;font-size:1.3rem;&quot;&gt;Scope&lt;/h2&gt;
+      &lt;ul&gt;
+        &lt;li&gt;Environment: Linux &amp;amp; CLI, alignment &amp;amp; BLAST, RNA-seq in practice&lt;/li&gt;
+        &lt;li&gt;Sequences &amp;amp; evolution: MSA &amp;amp; visualization, protein analysis / design, phylogenetics&lt;/li&gt;
+        &lt;li&gt;Genome &amp;amp; omics: nucleic-acid analysis &amp;amp; genomics, multi-omics integration&lt;/li&gt;
+        &lt;li&gt;Bench &amp;amp; application: molecular biology (primer / vector / CRISPR), virtual screening &amp;amp; drug design&lt;/li&gt;
+        &lt;li&gt;Resources: common databases, software and local-tool recommendations&lt;/li&gt;
+      &lt;/ul&gt;
+
+      &lt;h2 style=&quot;margin-top:2rem;font-size:1.3rem;&quot;&gt;Who it is for&lt;/h2&gt;
+      &lt;p&gt;
+        Undergraduates in bioinformatics and the life sciences, and anyone who wants to learn bioinformatics but is
+        put off by the command line and analysis environment. If you are willing to type commands, you can follow along.
+      &lt;/p&gt;
+
+      &lt;h2 style=&quot;margin-top:2rem;font-size:1.3rem;&quot;&gt;About me&lt;/h2&gt;
+      &lt;p&gt;
+        I am 【fill in your name / title, e.g. Lecturer, School of Life Sciences】, researching
+        【fill in, e.g. genomics and transcriptomics】. Content grows as the course progresses.
+        Feel free to discuss, suggest or report errors on
+        &lt;a href=&quot;https://github.com/marking2004&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;.
+      &lt;/p&gt;
+</code></pre>
+
+    </div>
+    
+  </div>
+</article>
+
+  </main>
+  <footer class="site-footer">
+  <div class="container">
+    <p>© <span id="year"></span> 生信自学指南 · 托管于 GitHub Pages</p>
+  </div>
+</footer>
+
+  <script src="/bioinformatics_Self-Study-Tutorial/assets/js/main.js"></script>
+</body>
+</html>
