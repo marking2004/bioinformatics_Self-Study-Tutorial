@@ -171,6 +171,19 @@
                 href="https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/en/posts/software.html"
                 />
   </url><url>
+    <loc>https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/en/posts/case-study.html</loc>
+    <lastmod>2026-10-05T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/posts/case-study.html"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/en/posts/case-study.html"
+                />
+  </url><url>
     <loc>https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/en/about.html</loc>
     <lastmod>2026-10-05T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -182,6 +195,19 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/en/about.html"
+                />
+  </url><url>
+    <loc>https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/en/references.html</loc>
+    <lastmod>2026-10-05T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/references.html"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/en/references.html"
                 />
   </url><url>
     <loc>https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/en/index.html</loc>
