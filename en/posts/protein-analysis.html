@@ -25,6 +25,7 @@
     <nav class="nav-links">
       <a href="/bioinformatics_Self-Study-Tutorial/en/index.html">Home</a>
       <a href="/bioinformatics_Self-Study-Tutorial/en/about.html">About</a>
+      <a href="/bioinformatics_Self-Study-Tutorial/en/references.html">References</a>
       <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
       
         <a class="lang-toggle" href="/bioinformatics_Self-Study-Tutorial/posts/protein-analysis.html" aria-label="切换语言">中文</a>
@@ -74,6 +75,13 @@ colabfold_batch seqs.fasta output_dir/</code></pre>
           <h2>5. Functional annotation</h2>
           <p>Combine UniProt (function, GO terms), KEGG (pathways) and STRING (interactome) for a judgment. Automated annotation is often homology-based — confirm key claims experimentally.</p>
           <blockquote>Sequence → structure → function is a chain that gets less certain downstream. Structure prediction is accurate, but "has a structure" ≠ "known function"; be conservative about function annotation.</blockquote>
+<h2 id="mini-case">Mini-case</h2>
+<p>Parse a protein sequence and compute its molecular weight with Biopython; annotate domains by uploading the sequence to NCBI CDD or InterPro.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> Bio.Seq <span style="color:#f92672">import</span> Seq
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Bio.SeqUtils <span style="color:#f92672">import</span> molecular_weight
+</span></span><span style="display:flex;"><span>seq <span style="color:#f92672">=</span> Seq(<span style="color:#e6db74">&#34;MSK&#34;</span>)          <span style="color:#75715e"># replace with a real sequence</span>
+</span></span><span style="display:flex;"><span>print(molecular_weight(seq, <span style="color:#e6db74">&#34;protein&#34;</span>))
+</span></span></code></pre></div><p>Observe: mass is in Da; domains (zinc finger, kinase, ...) usually map to specific functions and are the entry point for annotation.</p>
 
     </div>
     
