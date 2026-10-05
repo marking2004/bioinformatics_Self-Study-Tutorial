@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>肽与蛋白质设计：合理设计与从头设计 · 生信自学指南</title>
+  <meta name="description" content="改造天然蛋白、设计新肽与新蛋白（含定向进化、RFdiffusion / ProteinMPNN 等从头设计方法）。" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t) document.documentElement.setAttribute('data-theme', t);
+        else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+        var l = localStorage.getItem('site-lang') || 'zh';
+        document.documentElement.setAttribute('data-lang', l);
+        document.documentElement.setAttribute('lang', l === 'en' ? 'en' : 'zh-CN');
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="../index.html"><span class="brand-mark">◢◤</span> 生信自学指南</a>
+      <nav class="nav-links">
+        <a href="../index.html" class="lang-zh">首页</a><a href="../index.html" class="lang-en">Home</a>
+        <a href="../about.html" class="lang-zh">关于</a><a href="../about.html" class="lang-en">About</a>
+        <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
+        <button id="lang-toggle" class="lang-toggle" aria-label="切换语言">EN</button>
+        <button id="theme-toggle" class="theme-toggle" aria-label="切换主题" title="切换浅色/深色">◐</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="article">
+      <div class="container">
+        <a class="back-link lang-zh" href="../index.html">← 返回课程模块</a>
+        <a class="back-link lang-en" href="../index.html">← Back to modules</a>
+        <header class="article-header">
+          <span class="post-tag lang-zh">蛋白质设计</span><span class="post-tag lang-en">Design</span>
+          <h1 class="lang-zh">肽与蛋白质设计：合理设计与从头设计</h1>
+          <h1 class="lang-en">Peptide &amp; Protein Design: Rational &amp; De novo</h1>
+          <p class="article-meta lang-zh">蛋白质 · 约 20 分钟</p>
+          <p class="article-meta lang-en">Proteins · ~20 min</p>
+        </header>
+
+        <div class="article-body lang-zh">
+          <p>分析是"读懂"蛋白质，设计是"写"蛋白质。本模块覆盖两类思路：在天然骨架上改（合理设计 / 定向进化），以及从零生成新骨架（从头设计）。肽设计是其中更轻量、更贴近抗菌 / 结合应用的入口。</p>
+          <h2>1. 合理设计（基于结构与机理）</h2>
+          <ul>
+            <li><strong>定点突变</strong>：改关键残基调活性、稳定性或特异性（如把 Ser 换成 Cys 加二硫键）；</li>
+            <li><strong>共识设计</strong>：参考一个家族的多序列比对，取"最共识"残基提高热稳定性；</li>
+            <li><strong>酶工程</strong>：用结构 + 分子动力学（MD）评估突变效果。</li>
+          </ul>
+          <h2>2. 定向进化（"无理性"但有效）</h2>
+          <p>不依赖结构知识：易错 PCR 引入随机突变 → 建库 → 筛选 / 选择（噬菌体展示、酵母展示）→ 多轮富集。适合"说不清机理但要有功能"的场景。</p>
+          <h2>3. 从头设计（de novo）</h2>
+          <p>近年 AI 让"凭空设计"成为现实，核心三步循环：</p>
+          <ol>
+            <li><strong>骨架生成</strong>：RFdiffusion / Chroma 生成满足约束的新折叠；</li>
+            <li><strong>序列设计</strong>：ProteinMPNN 在给定骨架上设计氨基酸序列；</li>
+            <li><strong>过滤与预测</strong>：用 AlphaFold 重预测，挑 pLDDT 高、自洽性好的候选。</li>
+          </ol>
+          <pre><code># RFdiffusion 生成结合某表位的 scaffold
+python run_inference.py --pmpnn True \
+  --contig 'B15-25/0 0 25-35' --out_dir designs/</code></pre>
+          <h2>4. 肽设计专门路径</h2>
+          <ul>
+            <li><strong>抗菌肽（AMP）</strong>：看疏水性、正电荷、两亲性螺旋；</li>
+            <li><strong>结合肽 / 抑制剂</strong>：可来自噬菌体展示淘选，或用 RFdiffusion 的 binder 模式；</li>
+            <li><strong>工具</strong>：PeptideBuilder、HeliQuest、CAMPR4（AMP 数据库与预测）。</li>
+          </ul>
+          <h2>5. 一条可落地的流程</h2>
+          <p>明确功能目标 → 选骨架（天然改 / 从头生成）→ 设计序列 → <em>in silico</em> 检验（折叠自洽、对接、ADMET）→ 合成与实验验证。</p>
+          <blockquote>设计比分析更"软"：计算上"很漂亮"的蛋白，湿实验可能不表达、不折叠。务必准备多候选、并行验证，别把宝押在一个序列上。</blockquote>
+          <p><a href="../index.html">← 返回课程模块</a></p>
+        </div>
+
+        <div class="article-body lang-en">
+          <p>Analysis "reads" proteins; design "writes" them. This module covers two philosophies: editing a natural scaffold (rational design / directed evolution) and generating new scaffolds from scratch (de novo). Peptide design is the lighter, application-closer entry point (antimicrobial / binding).</p>
+          <h2>1. Rational design (structure- and mechanism-based)</h2>
+          <ul>
+            <li><strong>Site-directed mutagenesis</strong>: change key residues to tune activity, stability or specificity (e.g. Ser→Cys to add a disulfide);</li>
+            <li><strong>Consensus design</strong>: from a family MSA take the "most consensus" residues to improve thermostability;</li>
+            <li><strong>Enzyme engineering</strong>: use structure + MD to estimate mutation effects.</li>
+          </ul>
+          <h2>2. Directed evolution ("irrational" but effective)</h2>
+          <p>No structural knowledge needed: error-prone PCR introduces random mutations → library → screen / select (phage display, yeast display) → enrich over rounds. Good when the mechanism is unclear but function is needed.</p>
+          <h2>3. De novo design</h2>
+          <p>AI now makes "design from nothing" real, in a three-step loop:</p>
+          <ol>
+            <li><strong>Scaffold generation</strong>: RFdiffusion / Chroma generate new folds under constraints;</li>
+            <li><strong>Sequence design</strong>: ProteinMPNN designs amino acids on a given scaffold;</li>
+            <li><strong>Filter &amp; predict</strong>: re-predict with AlphaFold, keep high-pLDDT, self-consistent candidates.</li>
+          </ol>
+          <pre><code># RFdiffusion: generate a binder scaffold for an epitope
+python run_inference.py --pmpnn True \
+  --contig 'B15-25/0 0 25-35' --out_dir designs/</code></pre>
+          <h2>4. Peptide-specific path</h2>
+          <ul>
+            <li><strong>Antimicrobial peptides (AMPs)</strong>: watch hydrophobicity, positive charge, amphipathic helix;</li>
+            <li><strong>Binding / inhibitory peptides</strong>: from phage display panning, or RFdiffusion binder mode;</li>
+            <li><strong>Tools</strong>: PeptideBuilder, HeliQuest, CAMPR4 (AMP DB and prediction).</li>
+          </ul>
+          <h2>5. A workable pipeline</h2>
+          <p>Define function → pick scaffold (edit natural / generate de novo) → design sequence → <em>in silico</em> tests (folding self-consistency, docking, ADMET) → synthesis and experiment.</p>
+          <blockquote>Design is "softer" than analysis: a computationally beautiful protein may not express or fold. Always prepare multiple candidates and validate in parallel — don't bet on a single sequence.</blockquote>
+          <p><a href="../index.html">← Back to modules</a></p>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> 生信自学指南 · 由纯 HTML/CSS/JS 构建，托管于 GitHub Pages</p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
