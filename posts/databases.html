@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>常用生物信息数据库简介 · 生信自学指南</title>
+  <meta name="description" content="序列、结构、组学、通路等主流数据库的种类、查询、下载、上传与在线分析用法。" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t) document.documentElement.setAttribute('data-theme', t);
+        else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+        var l = localStorage.getItem('site-lang') || 'zh';
+        document.documentElement.setAttribute('data-lang', l);
+        document.documentElement.setAttribute('lang', l === 'en' ? 'en' : 'zh-CN');
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="../index.html"><span class="brand-mark">◢◤</span> 生信自学指南</a>
+      <nav class="nav-links">
+        <a href="../index.html" class="lang-zh">首页</a><a href="../index.html" class="lang-en">Home</a>
+        <a href="../about.html" class="lang-zh">关于</a><a href="../about.html" class="lang-en">About</a>
+        <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
+        <button id="lang-toggle" class="lang-toggle" aria-label="切换语言">EN</button>
+        <button id="theme-toggle" class="theme-toggle" aria-label="切换主题" title="切换浅色/深色">◐</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="article">
+      <div class="container">
+        <a class="back-link lang-zh" href="../index.html">← 返回课程模块</a>
+        <a class="back-link lang-en" href="../index.html">← Back to modules</a>
+        <header class="article-header">
+          <span class="post-tag lang-zh">数据库</span><span class="post-tag lang-en">Databases</span>
+          <h1 class="lang-zh">常用生物信息数据库简介</h1>
+          <h1 class="lang-en">Common Bioinformatics Databases</h1>
+          <p class="article-meta lang-zh">资源 · 约 15 分钟</p>
+          <p class="article-meta lang-en">Resources · ~15 min</p>
+        </header>
+
+        <div class="article-body lang-zh">
+          <p>数据库是生信的"原料库"。本模块按数据类型给你一张地图，并讲清查询、下载、上传和在线分析四件基本操作。</p>
+          <h2>1. 主流数据库地图</h2>
+          <table>
+            <thead><tr><th>类型</th><th>代表库</th><th>存什么</th></tr></thead>
+            <tbody>
+              <tr><td>序列</td><td>NCBI、ENA、DDBJ</td><td>核酸 / 蛋白原始记录</td></tr>
+              <tr><td>蛋白</td><td>UniProt、Pfam、InterPro</td><td>功能 / 结构域注释</td></tr>
+              <tr><td>结构</td><td>PDB、AlphaFold DB</td><td>三维结构</td></tr>
+              <tr><td>组学</td><td>GEO、SRA、ArrayExpress</td><td>表达 / 测序原始数据</td></tr>
+              <tr><td>通路</td><td>KEGG、Reactome</td><td>代谢与信号通路</td></tr>
+              <tr><td>分类</td><td>NCBI Taxonomy、ICTV</td><td>物种 / 病毒分类</td></tr>
+              <tr><td>文献</td><td>PubMed</td><td>论文索引</td></tr>
+            </tbody>
+          </table>
+          <h2>2. 查询</h2>
+          <ul>
+            <li>网页搜索：直接用基因名 / 登录号（如 NM_00001、P12345）；</li>
+            <li><strong>Entrez / E-utilities</strong>：NCBI 的程序化查询接口（适合批量）；</li>
+            <li>跨库检索：UniProt 可一键跳到对应 PDB / KEGG / GO。</li>
+          </ul>
+          <h2>3. 下载</h2>
+          <ul>
+            <li>单条：网页 "Send to / Download"；</li>
+            <li>批量：<strong>FTP / Aspera</strong>（大文件），或 <code>esearch</code> + <code>efetch</code> 脚本；</li>
+          </ul>
+          <pre><code># 用 NCBI E-utilities 拉一批核酸
+esearch -db nucleotide -query "Arabidopsis[orgn]" | \
+  efetch -format fasta &gt; ara.fa</code></pre>
+          <h2>4. 上传与在线分析</h2>
+          <ul>
+            <li><strong>上传</strong>：测序原始数据存 SRA（需申请登录号）；新序列可提交 GenBank；</li>
+            <li><strong>在线分析</strong>：很多库自带工具——NCBI BLAST、EMBL-EBI 的 MSA / 结构预测、UniProt 的 BLAST 与功能预测，免安装即用。</li>
+          </ul>
+          <blockquote>引用数据时务必记录<strong>登录号（accession）</strong>和版本。数据库会更新，论文里写清版本，别人才能复现你的结果。</blockquote>
+          <p><a href="../index.html">← 返回课程模块</a></p>
+        </div>
+
+        <div class="article-body lang-en">
+          <p>Databases are the "raw-material warehouses" of bioinformatics. This module gives you a map by data type, plus the four basic operations: query, download, submit, analyze online.</p>
+          <h2>1. Map of major databases</h2>
+          <table>
+            <thead><tr><th>Type</th><th>Examples</th><th>Stores</th></tr></thead>
+            <tbody>
+              <tr><td>Sequence</td><td>NCBI, ENA, DDBJ</td><td>nucleotide / protein records</td></tr>
+              <tr><td>Protein</td><td>UniProt, Pfam, InterPro</td><td>function / domain annotation</td></tr>
+              <tr><td>Structure</td><td>PDB, AlphaFold DB</td><td>3D structures</td></tr>
+              <tr><td>Omics</td><td>GEO, SRA, ArrayExpress</td><td>expression / raw sequencing</td></tr>
+              <tr><td>Pathway</td><td>KEGG, Reactome</td><td>metabolic / signaling pathways</td></tr>
+              <tr><td>Taxonomy</td><td>NCBI Taxonomy, ICTV</td><td>species / virus classification</td></tr>
+              <tr><td>Literature</td><td>PubMed</td><td>paper index</td></tr>
+            </tbody>
+          </table>
+          <h2>2. Query</h2>
+          <ul>
+            <li>Web search: gene name / accession (e.g. NM_00001, P12345);</li>
+            <li><strong>Entrez / E-utilities</strong>: programmatic NCBI interface (for batches);</li>
+            <li>Cross-db: UniProt jumps to the matching PDB / KEGG / GO in one click.</li>
+          </ul>
+          <h2>3. Download</h2>
+          <ul>
+            <li>Single: web "Send to / Download";</li>
+            <li>Batch: <strong>FTP / Aspera</strong> (large files), or <code>esearch</code> + <code>efetch</code> scripts;</li>
+          </ul>
+          <pre><code># pull a set of nucleotides via NCBI E-utilities
+esearch -db nucleotide -query "Arabidopsis[orgn]" | \
+  efetch -format fasta &gt; ara.fa</code></pre>
+          <h2>4. Submit and analyze online</h2>
+          <ul>
+            <li><strong>Submit</strong>: raw sequencing goes to SRA (need an accession); new sequences to GenBank;</li>
+            <li><strong>Online analysis</strong>: many DBs ship tools — NCBI BLAST, EMBL-EBI MSA / structure prediction, UniProt BLAST and function prediction, no install needed.</li>
+          </ul>
+          <blockquote>When citing data, always record the <strong>accession</strong> and version. Databases update; write the version so others can reproduce your result.</blockquote>
+          <p><a href="../index.html">← Back to modules</a></p>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> 生信自学指南 · 由纯 HTML/CSS/JS 构建，托管于 GitHub Pages</p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
