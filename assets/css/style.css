@@ -299,8 +299,5 @@ a:hover { text-decoration: underline; }
   .search { width: 100%; }
 }
 
-/* ---------- Bilingual (中英双语) ---------- */
-/* 默认（无 data-lang 或 data-lang=zh）显示中文、隐藏英文；data-lang=en 时相反 */
-html:not([data-lang]) .lang-en { display: none; }
-html[data-lang="zh"] .lang-en { display: none; }
-html[data-lang="en"] .lang-zh { display: none; }
+/* ---------- Language switch (按 URL 切换 zh / en) ---------- */
+/* 语言切换已是独立链接（href 指向对应语言页面），无需 data-lang 显隐规则 */
