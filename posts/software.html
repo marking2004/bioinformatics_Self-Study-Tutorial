@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="light">
+<html lang="zh" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>生信软件与本地工具推荐 · 生信自学指南</title>
-  <meta name="description" content="命令行与图形界面工具清单，含 Windows 下可直接用的本地软件，附安装与选型建议。" />
+  <meta name="description" content="高校生物信息学课程配套自学资源：把命令行、序列分析、组学、结构预测拆成可自学的模块。" />
+  <link rel="stylesheet" href="/bioinformatics_Self-Study-Tutorial/assets/css/style.css" />
   <script>
     (function () {
       try {
@@ -13,43 +14,39 @@
         else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
           document.documentElement.setAttribute('data-theme', 'dark');
         }
-        var l = localStorage.getItem('site-lang') || 'zh';
-        document.documentElement.setAttribute('data-lang', l);
-        document.documentElement.setAttribute('lang', l === 'en' ? 'en' : 'zh-CN');
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="../assets/css/style.css" />
 </head>
 <body>
   <header class="site-header">
-    <div class="container nav">
-      <a class="brand" href="../index.html"><span class="brand-mark">◢◤</span> 生信自学指南</a>
-      <nav class="nav-links">
-        <a href="../index.html" class="lang-zh">首页</a><a href="../index.html" class="lang-en">Home</a>
-        <a href="../about.html" class="lang-zh">关于</a><a href="../about.html" class="lang-en">About</a>
-        <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
-        <button id="lang-toggle" class="lang-toggle" aria-label="切换语言">EN</button>
-        <button id="theme-toggle" class="theme-toggle" aria-label="切换主题" title="切换浅色/深色">◐</button>
-      </nav>
-    </div>
-  </header>
+  <div class="container nav">
+    <a class="brand" href="/bioinformatics_Self-Study-Tutorial/index.html"><span class="brand-mark">◢◤</span> 生信自学指南</a>
+    <nav class="nav-links">
+      <a href="/bioinformatics_Self-Study-Tutorial/index.html">首页</a>
+      <a href="/bioinformatics_Self-Study-Tutorial/about.html">关于</a>
+      <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
+      
+        <a class="lang-toggle" href="/bioinformatics_Self-Study-Tutorial/en/posts/software.html" aria-label="切换语言">EN</a>
+      
+      <button id="theme-toggle" class="theme-toggle" aria-label="切换主题" title="切换浅色/深色">◐</button>
+    </nav>
+  </div>
+</header>
 
   <main>
-    <article class="article">
-      <div class="container">
-        <a class="back-link lang-zh" href="../index.html">← 返回课程模块</a>
-        <a class="back-link lang-en" href="../index.html">← Back to modules</a>
-        <header class="article-header">
-          <span class="post-tag lang-zh">软件工具</span><span class="post-tag lang-en">Software</span>
-          <h1 class="lang-zh">生信软件与本地工具推荐</h1>
-          <h1 class="lang-en">Recommended Bioinformatics Software</h1>
-          <p class="article-meta lang-zh">资源 · 约 15 分钟</p>
-          <p class="article-meta lang-en">Resources · ~15 min</p>
-        </header>
-
-        <div class="article-body lang-zh">
-          <p>工具太多反而让人无从下手。这里按"先装什么、各做什么"给一份务实清单，并特别标出 Windows 下能直接用的本地图形工具。</p>
+    
+<article class="article">
+  <div class="container">
+    <a class="back-link" href="/bioinformatics_Self-Study-Tutorial/index.html">← 返回课程模块</a>
+    
+    <header class="article-header">
+      <span class="post-tag">软件工具</span>
+      <h1>生信软件与本地工具推荐</h1>
+      <p class="article-meta">资源 · 约 15 分钟</p>
+    </header>
+    <div class="article-body">
+      <p>工具太多反而让人无从下手。这里按"先装什么、各做什么"给一份务实清单，并特别标出 Windows 下能直接用的本地图形工具。</p>
           <h2>1. 先装好的"基础环境"</h2>
           <ul>
             <li><strong>WSL2（Windows）</strong>：在 Windows 上跑 Linux 命令行，绝大多数生信工具的家；</li>
@@ -86,59 +83,19 @@
             <li>优先用 conda / 容器装，避免"依赖地狱"。</li>
           </ul>
           <blockquote>工具是手段不是目的。能回答问题的是你的思路，软件只是把思路变成结果。先想清楚要算什么，再去选工具。</blockquote>
-          <p><a href="../index.html">← 返回课程模块</a></p>
-        </div>
 
-        <div class="article-body lang-en">
-          <p>Too many tools paralyze. Here is a pragmatic list of "what to install first and what each does", with Windows-native GUI tools flagged.</p>
-          <h2>1. Install first: the base environment</h2>
-          <ul>
-            <li><strong>WSL2 (Windows)</strong>: run Linux CLI on Windows — home of most bioinformatics tools;</li>
-            <li><strong>R + RStudio</strong>: stats &amp; visualization (DESeq2, ggplot2, clusterProfiler);</li>
-            <li><strong>Python + (Ana)Conda</strong>: Biopython, pipelines; conda manages dependencies best;</li>
-            <li><strong>Git</strong>: fetch code, manage versions.</li>
-          </ul>
-          <h2>2. Windows-native GUI tools</h2>
-          <table>
-            <thead><tr><th>Tool</th><th>Use</th><th>Notes</th></tr></thead>
-            <tbody>
-              <tr><td>UGENE</td><td>alignment / trees / viz all-in-one</td><td>free, ready to use</td></tr>
-              <tr><td>Jalview</td><td>MSA visualization</td><td>Java, cross-platform</td></tr>
-              <tr><td>MEGA</td><td>tree building (point-and-click)</td><td>teaching-friendly</td></tr>
-              <tr><td>Benchling</td><td>primers / vectors / notebook (web)</td><td>free tier enough</td></tr>
-              <tr><td>Cytoscape</td><td>interaction network viz</td><td>free</td></tr>
-              <tr><td>FigTree / TreeView</td><td>tree viewer</td><td>lightweight</td></tr>
-              <tr><td>PyMOL</td><td>protein structure</td><td>edu version free</td></tr>
-            </tbody>
-          </table>
-          <p>Paid-but-common: SnapGene (vectors), Geneious (suite), CLC Genomics (pipelines). On a budget, use free alternatives + CLI.</p>
-          <h2>3. CLI workhorses (by module)</h2>
-          <ul>
-            <li>Alignment: BLAST, BWA, minimap2, HISAT2;</li>
-            <li>MSA: MAFFT, ClustalOmega, MUSCLE;</li>
-            <li>Evolution: IQ-TREE, RAxML, ASTRAL;</li>
-            <li>Omics: fastp, fastqc, featureCounts, GATK, vcftools;</li>
-            <li>Drugs: AutoDock Vina, Open Babel.</li>
-          </ul>
-          <h2>4. Selection tips</h2>
-          <ul>
-            <li>Beginners: learn <strong>one GUI tool + one language (R or Python)</strong>, not everything;</li>
-            <li>Different tools may disagree; cross-validate key conclusions;</li>
-            <li>Prefer conda / containers to avoid "dependency hell".</li>
-          </ul>
-          <blockquote>Tools are means, not ends. What answers the question is your thinking; software only turns it into results. Know what to compute before picking the tool.</blockquote>
-          <p><a href="../index.html">← Back to modules</a></p>
-        </div>
-      </div>
-    </article>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>© <span id="year"></span> 生信自学指南 · 由纯 HTML/CSS/JS 构建，托管于 GitHub Pages</p>
     </div>
-  </footer>
+    
+  </div>
+</article>
 
-  <script src="../assets/js/main.js"></script>
+  </main>
+  <footer class="site-footer">
+  <div class="container">
+    <p>© <span id="year"></span> 生信自学指南 · 托管于 GitHub Pages</p>
+  </div>
+</footer>
+
+  <script src="/bioinformatics_Self-Study-Tutorial/assets/js/main.js"></script>
 </body>
 </html>
