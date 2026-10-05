@@ -25,6 +25,7 @@
     <nav class="nav-links">
       <a href="/bioinformatics_Self-Study-Tutorial/en/index.html">Home</a>
       <a href="/bioinformatics_Self-Study-Tutorial/en/about.html">About</a>
+      <a href="/bioinformatics_Self-Study-Tutorial/en/references.html">References</a>
       <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
       
         <a class="lang-toggle" href="/bioinformatics_Self-Study-Tutorial/posts/msa.html" aria-label="切换语言">中文</a>
@@ -82,6 +83,10 @@ plot(p)</code></pre>
 <li><strong>Semi-conserved (e.g. K/R swap)</strong>: function kept, sequence changed.</li>
 </ul>
 <blockquote>MSA quality decides everything downstream. Forcing a distant alignment yields &quot;false conservation&quot;. Always eyeball it after aligning — don't trust the software blindly.</blockquote></p>
+<h2 id="mini-case">Mini-case</h2>
+<p>Align a few orthologs and look at conserved positions (prepare sequences yourself, or use step 3 of the Case Study):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mafft --auto tp53_orthologs.fasta &gt; aln.fa
+</span></span></code></pre></div><p>Observe: aligned sequences have equal length; open in AliView / Jalview — the <code>*</code> row marks fully conserved columns, usually key functional sites.</p>
 
     </div>
     
