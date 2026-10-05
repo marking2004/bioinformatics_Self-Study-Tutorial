@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>分子生物学实验：引物、载体与 CRISPR · 生信自学指南</title>
+  <meta name="description" content="生信如何服务湿实验：引物设计、载体构建、CRISPR 靶点设计与脱靶评估。" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t) document.documentElement.setAttribute('data-theme', t);
+        else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+        var l = localStorage.getItem('site-lang') || 'zh';
+        document.documentElement.setAttribute('data-lang', l);
+        document.documentElement.setAttribute('lang', l === 'en' ? 'en' : 'zh-CN');
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="../index.html"><span class="brand-mark">◢◤</span> 生信自学指南</a>
+      <nav class="nav-links">
+        <a href="../index.html" class="lang-zh">首页</a><a href="../index.html" class="lang-en">Home</a>
+        <a href="../about.html" class="lang-zh">关于</a><a href="../about.html" class="lang-en">About</a>
+        <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
+        <button id="lang-toggle" class="lang-toggle" aria-label="切换语言">EN</button>
+        <button id="theme-toggle" class="theme-toggle" aria-label="切换主题" title="切换浅色/深色">◐</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="article">
+      <div class="container">
+        <a class="back-link lang-zh" href="../index.html">← 返回课程模块</a>
+        <a class="back-link lang-en" href="../index.html">← Back to modules</a>
+        <header class="article-header">
+          <span class="post-tag lang-zh">分子生物学</span><span class="post-tag lang-en">Mol. Bio</span>
+          <h1 class="lang-zh">分子生物学实验：引物、载体与 CRISPR</h1>
+          <h1 class="lang-en">Molecular Biology: Primers, Vectors &amp; CRISPR</h1>
+          <p class="article-meta lang-zh">实验 · 约 18 分钟</p>
+          <p class="article-meta lang-en">Bench · ~18 min</p>
+        </header>
+
+        <div class="article-body lang-zh">
+          <p>生信不只服务计算，也直接服务于 bench。这一模块讲三件"下机前先算一遍"的事，能省大量试错成本。</p>
+          <h2>1. 引物设计</h2>
+          <ul>
+            <li><strong>PCR 引物</strong>：用 NCBI Primer-BLAST 或 Primer3；目标 Tm 接近（差 &lt;5℃）、长度 18–25 nt、GC 40–60%、产物 100–500 bp；</li>
+            <li><strong>避免</strong>：自身 / 引物间二聚体、发夹、3′ 端互补；</li>
+            <li><strong>特异性</strong>：在基因组里 BLAST 确认只扩目标区域。</li>
+          </ul>
+          <pre><code># Primer3 也可命令行调用（pyPCR 等封装）
+primer3_core --input input_seq.txt --output primers.txt</code></pre>
+          <h2>2. 载体构建</h2>
+          <ul>
+            <li><strong>限制性酶切 + 连接</strong>：经典但受酶切位点限制；</li>
+            <li><strong>Gibson / Golden Gate</strong>：无缝组装多个片段，Golden Gate 用 Type IIs 酶可一次性组装；</li>
+            <li><strong>工具</strong>：SnapGene / Benchling 做图谱与引物规划（含Windows 本地版）。</li>
+          </ul>
+          <h2>3. CRISPR 靶点设计与脱靶</h2>
+          <ol>
+            <li>选靶点：用 <strong>CRISPOR</strong> / <strong>CHOPCHOP</strong> 在编码区 early exon 找 20 nt 原间隔序列（PAM 如 NGG）；</li>
+            <li>评分：看 on-target 效率（如 CRISPOR 的 Doench 评分）；</li>
+            <li>脱靶：用 <strong>Cas-OFFinder</strong> / CasFinder 在全基因组搜近同源位点，挑脱靶少的；</li>
+            <li>验证：T7E1 / Sanger 或深度测序看编辑效率。</li>
+          </ol>
+          <blockquote>湿实验的"算"很便宜，"做"很贵。引物二聚体、载体反向连、CRISPR 脱靶——这些在电脑上花十分钟能避开的坑，在实验台上要花一周重做。</blockquote>
+          <p><a href="../index.html">← 返回课程模块</a></p>
+        </div>
+
+        <div class="article-body lang-en">
+          <p>Bioinformatics serves not only computing but the bench. This module covers three "compute once before the experiment" tasks that save a lot of trial-and-error.</p>
+          <h2>1. Primer design</h2>
+          <ul>
+            <li><strong>PCR primers</strong>: NCBI Primer-BLAST or Primer3; target Tm close (within 5℃), length 18–25 nt, GC 40–60%, product 100–500 bp;</li>
+            <li><strong>Avoid</strong>: self / primer dimers, hairpins, 3′ complementarity;</li>
+            <li><strong>Specificity</strong>: BLAST in the genome to confirm only the target amplifies.</li>
+          </ul>
+          <pre><code># Primer3 can also run on the command line (wrappers like pyPCR)
+primer3_core --input input_seq.txt --output primers.txt</code></pre>
+          <h2>2. Vector construction</h2>
+          <ul>
+            <li><strong>Restriction + ligation</strong>: classic but limited by sites;</li>
+            <li><strong>Gibson / Golden Gate</strong>: seamless multi-fragment assembly; Golden Gate uses Type IIs enzymes for one-pot assembly;</li>
+            <li><strong>Tools</strong>: SnapGene / Benchling for maps and primer planning (Windows builds available).</li>
+          </ul>
+          <h2>3. CRISPR target design and off-target</h2>
+          <ol>
+            <li>Pick targets: <strong>CRISPOR</strong> / <strong>CHOPCHOP</strong> find 20-nt spacers in early exons (PAM e.g. NGG);</li>
+            <li>Score: on-target efficiency (e.g. CRISPOR Doench score);</li>
+            <li>Off-target: <strong>Cas-OFFinder</strong> / CasFinder scan the genome for near-homologs; pick low off-target;</li>
+            <li>Validate: T7E1 / Sanger or deep sequencing for editing efficiency.</li>
+          </ol>
+          <blockquote>On the bench, "computing" is cheap and "doing" is expensive. Primer dimers, reverse-ligated vectors, CRISPR off-targets — pitfalls avoidable in ten minutes at the computer cost a week at the bench.</blockquote>
+          <p><a href="../index.html">← Back to modules</a></p>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> 生信自学指南 · 由纯 HTML/CSS/JS 构建，托管于 GitHub Pages</p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
