@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="light">
+<html lang="zh" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>虚拟筛选与计算机辅助药物设计 · 生信自学指南</title>
-  <meta name="description" content="从靶点结构到候选分子：分子对接、虚拟筛选、ADMET 与先导优化。" />
+  <meta name="description" content="高校生物信息学课程配套自学资源：把命令行、序列分析、组学、结构预测拆成可自学的模块。" />
+  <link rel="stylesheet" href="/bioinformatics_Self-Study-Tutorial/assets/css/style.css" />
   <script>
     (function () {
       try {
@@ -13,43 +14,39 @@
         else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
           document.documentElement.setAttribute('data-theme', 'dark');
         }
-        var l = localStorage.getItem('site-lang') || 'zh';
-        document.documentElement.setAttribute('data-lang', l);
-        document.documentElement.setAttribute('lang', l === 'en' ? 'en' : 'zh-CN');
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="../assets/css/style.css" />
 </head>
 <body>
   <header class="site-header">
-    <div class="container nav">
-      <a class="brand" href="../index.html"><span class="brand-mark">◢◤</span> 生信自学指南</a>
-      <nav class="nav-links">
-        <a href="../index.html" class="lang-zh">首页</a><a href="../index.html" class="lang-en">Home</a>
-        <a href="../about.html" class="lang-zh">关于</a><a href="../about.html" class="lang-en">About</a>
-        <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
-        <button id="lang-toggle" class="lang-toggle" aria-label="切换语言">EN</button>
-        <button id="theme-toggle" class="theme-toggle" aria-label="切换主题" title="切换浅色/深色">◐</button>
-      </nav>
-    </div>
-  </header>
+  <div class="container nav">
+    <a class="brand" href="/bioinformatics_Self-Study-Tutorial/index.html"><span class="brand-mark">◢◤</span> 生信自学指南</a>
+    <nav class="nav-links">
+      <a href="/bioinformatics_Self-Study-Tutorial/index.html">首页</a>
+      <a href="/bioinformatics_Self-Study-Tutorial/about.html">关于</a>
+      <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
+      
+        <a class="lang-toggle" href="/bioinformatics_Self-Study-Tutorial/en/posts/cadd.html" aria-label="切换语言">EN</a>
+      
+      <button id="theme-toggle" class="theme-toggle" aria-label="切换主题" title="切换浅色/深色">◐</button>
+    </nav>
+  </div>
+</header>
 
   <main>
-    <article class="article">
-      <div class="container">
-        <a class="back-link lang-zh" href="../index.html">← 返回课程模块</a>
-        <a class="back-link lang-en" href="../index.html">← Back to modules</a>
-        <header class="article-header">
-          <span class="post-tag lang-zh">药物设计</span><span class="post-tag lang-en">Drug Design</span>
-          <h1 class="lang-zh">虚拟筛选与计算机辅助药物设计</h1>
-          <h1 class="lang-en">Virtual Screening &amp; Computer-aided Drug Design</h1>
-          <p class="article-meta lang-zh">药物 · 约 20 分钟</p>
-          <p class="article-meta lang-en">Drug · ~20 min</p>
-        </header>
-
-        <div class="article-body lang-zh">
-          <p>计算机辅助药物设计（CADD）用结构和计算，从海量化合物里挑出"值得合成验证"的少数候选。本模块走一条标准链路：靶点 → 对接 → 筛选 → 性质评估。</p>
+    
+<article class="article">
+  <div class="container">
+    <a class="back-link" href="/bioinformatics_Self-Study-Tutorial/index.html">← 返回课程模块</a>
+    
+    <header class="article-header">
+      <span class="post-tag">药物设计</span>
+      <h1>虚拟筛选与计算机辅助药物设计</h1>
+      <p class="article-meta">药物 · 约 20 分钟</p>
+    </header>
+    <div class="article-body">
+      <p>计算机辅助药物设计（CADD）用结构和计算，从海量化合物里挑出"值得合成验证"的少数候选。本模块走一条标准链路：靶点 → 对接 → 筛选 → 性质评估。</p>
           <h2>1. 准备靶点结构</h2>
           <ul>
             <li>从 PDB / AlphaFold DB 取蛋白结构，清掉水、加全氢、修侧链（可用 PyMOL / ChimeraX）；</li>
@@ -73,46 +70,19 @@ vina --receptor rec.pdbqt --ligand lig.pdbqt \
           <h2>5. 先导优化</h2>
           <p>拿到苗头化合物后，用结构指导改取代基、调 pK、改善选择性，循环"设计—合成—测试"。现代也用生成式模型（如 REINVENT）探索化学空间。</p>
           <blockquote>对接只是"过滤"不是"预测"。高分候选仍需湿实验（SPR / 酶活 / 细胞）确认；别把对接打分当 IC50。</blockquote>
-          <p><a href="../index.html">← 返回课程模块</a></p>
-        </div>
 
-        <div class="article-body lang-en">
-          <p>Computer-aided drug design (CADD) uses structure and computation to pick a few "worth synthesizing" candidates from a huge chemical space. This module follows a standard chain: target → docking → screening → property check.</p>
-          <h2>1. Prepare the target structure</h2>
-          <ul>
-            <li>Get the protein from PDB / AlphaFold DB, strip water, add hydrogens, fix side chains (PyMOL / ChimeraX);</li>
-            <li>Define the <strong>binding pocket</strong>: known ligand position, homologous structure, or SiteMap / fpocket prediction.</li>
-          </ul>
-          <h2>2. Molecular docking (core)</h2>
-          <p>Fit small molecules into the pocket and score binding. <strong>AutoDock Vina</strong> is free and fast:</p>
-          <pre><code># prepare receptor/ligand as pdbqt, then dock
-vina --receptor rec.pdbqt --ligand lig.pdbqt \
-     --config box.txt --out out.pdbqt</code></pre>
-          <p>Docking scores are relative rankings, not absolute affinities; different tools on the same protein may disagree — cross-validate.</p>
-          <h2>3. Virtual screening</h2>
-          <p>Batch-dock a large library (ZINC, PubChem, Enamine), keep top scores. Tip: filter for drug-likeness and deduplicate the library before screening to save time.</p>
-          <h2>4. ADMET and drug-likeness</h2>
-          <p>Good binding ≠ druggable. Use <strong>SwissADME</strong> / admetSAR:</p>
-          <ul>
-            <li><strong>Lipinski's rule of five</strong>: MW, logP, H-bond donors/acceptors;</li>
-            <li><strong>ADMET</strong>: absorption, distribution, metabolism, excretion, toxicity;</li>
-            <li><strong>Toxicity / off-target</strong>: hERG, CYP inhibition, etc.</li>
-          </ul>
-          <h2>5. Lead optimization</h2>
-          <p>With a hit, use structure to modify substituents, tune pK and selectivity, cycling "design — synthesize — test". Generative models (e.g. REINVENT) now explore chemical space.</p>
-          <blockquote>Docking is a filter, not a predictor. Top candidates still need wet validation (SPR / enzymatic / cellular); don't read a docking score as an IC50.</blockquote>
-          <p><a href="../index.html">← Back to modules</a></p>
-        </div>
-      </div>
-    </article>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>© <span id="year"></span> 生信自学指南 · 由纯 HTML/CSS/JS 构建，托管于 GitHub Pages</p>
     </div>
-  </footer>
+    
+  </div>
+</article>
 
-  <script src="../assets/js/main.js"></script>
+  </main>
+  <footer class="site-footer">
+  <div class="container">
+    <p>© <span id="year"></span> 生信自学指南 · 托管于 GitHub Pages</p>
+  </div>
+</footer>
+
+  <script src="/bioinformatics_Self-Study-Tutorial/assets/js/main.js"></script>
 </body>
 </html>
