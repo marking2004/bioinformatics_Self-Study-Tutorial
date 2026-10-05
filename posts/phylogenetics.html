@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="light">
+<html lang="zh" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>系统发育分析：单基因 / 多基因 / 组学 · 生信自学指南</title>
-  <meta name="description" content="从一棵基因树到物种树：建树方法、自举检验，以及如何用多基因和组学数据提高可靠性。" />
+  <meta name="description" content="高校生物信息学课程配套自学资源：把命令行、序列分析、组学、结构预测拆成可自学的模块。" />
+  <link rel="stylesheet" href="/bioinformatics_Self-Study-Tutorial/assets/css/style.css" />
   <script>
     (function () {
       try {
@@ -13,43 +14,39 @@
         else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
           document.documentElement.setAttribute('data-theme', 'dark');
         }
-        var l = localStorage.getItem('site-lang') || 'zh';
-        document.documentElement.setAttribute('data-lang', l);
-        document.documentElement.setAttribute('lang', l === 'en' ? 'en' : 'zh-CN');
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="../assets/css/style.css" />
 </head>
 <body>
   <header class="site-header">
-    <div class="container nav">
-      <a class="brand" href="../index.html"><span class="brand-mark">◢◤</span> 生信自学指南</a>
-      <nav class="nav-links">
-        <a href="../index.html" class="lang-zh">首页</a><a href="../index.html" class="lang-en">Home</a>
-        <a href="../about.html" class="lang-zh">关于</a><a href="../about.html" class="lang-en">About</a>
-        <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
-        <button id="lang-toggle" class="lang-toggle" aria-label="切换语言">EN</button>
-        <button id="theme-toggle" class="theme-toggle" aria-label="切换主题" title="切换浅色/深色">◐</button>
-      </nav>
-    </div>
-  </header>
+  <div class="container nav">
+    <a class="brand" href="/bioinformatics_Self-Study-Tutorial/index.html"><span class="brand-mark">◢◤</span> 生信自学指南</a>
+    <nav class="nav-links">
+      <a href="/bioinformatics_Self-Study-Tutorial/index.html">首页</a>
+      <a href="/bioinformatics_Self-Study-Tutorial/about.html">关于</a>
+      <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
+      
+        <a class="lang-toggle" href="/bioinformatics_Self-Study-Tutorial/en/posts/phylogenetics.html" aria-label="切换语言">EN</a>
+      
+      <button id="theme-toggle" class="theme-toggle" aria-label="切换主题" title="切换浅色/深色">◐</button>
+    </nav>
+  </div>
+</header>
 
   <main>
-    <article class="article">
-      <div class="container">
-        <a class="back-link lang-zh" href="../index.html">← 返回课程模块</a>
-        <a class="back-link lang-en" href="../index.html">← Back to modules</a>
-        <header class="article-header">
-          <span class="post-tag lang-zh">系统发育</span><span class="post-tag lang-en">Phylogeny</span>
-          <h1 class="lang-zh">系统发育分析：单基因 / 多基因 / 组学</h1>
-          <h1 class="lang-en">Phylogenetic Analysis: Single / Multi-gene / Omics</h1>
-          <p class="article-meta lang-zh">进化 · 约 20 分钟</p>
-          <p class="article-meta lang-en">Evolution · ~20 min</p>
-        </header>
-
-        <div class="article-body lang-zh">
-          <p>系统发育回答"谁和谁更近"。但"近"取决于你用哪段证据——一个基因、多个基因，还是全基因组。本模块按证据层次递进。</p>
+    
+<article class="article">
+  <div class="container">
+    <a class="back-link" href="/bioinformatics_Self-Study-Tutorial/index.html">← 返回课程模块</a>
+    
+    <header class="article-header">
+      <span class="post-tag">系统发育</span>
+      <h1>系统发育分析：单基因 / 多基因 / 组学</h1>
+      <p class="article-meta">进化 · 约 20 分钟</p>
+    </header>
+    <div class="article-body">
+      <p>系统发育回答"谁和谁更近"。但"近"取决于你用哪段证据——一个基因、多个基因，还是全基因组。本模块按证据层次递进。</p>
           <h2>1. 单基因树（最常见的入门）</h2>
           <p>流程：多序列比对（见 MSA 模块）→ 修剪（trimAl）→ 选替换模型 → 建树 → 自举检验。</p>
           <pre><code># IQ-TREE：自动选模型 + 1000 次自举
@@ -74,47 +71,19 @@ iqtree2 -s aln.trim.fasta -m MFP -B 1000 -T 4</code></pre>
           <h2>4. 读树时要小心</h2>
           <blockquote>长枝吸引（LBA）：两个快速进化的长枝会被错误地拉到一起。加外类群、用不同模型、看自举，都能帮忙发现它。</blockquote>
           <p>树的"枝长"是变化量，"节点支持率"才是可信度——别把长得好看的树当成对的树。</p>
-          <p><a href="../index.html">← 返回课程模块</a></p>
-        </div>
 
-        <div class="article-body lang-en">
-          <p>Phylogenetics answers "who is closer to whom". But "closer" depends on the evidence — one gene, several genes, or the whole genome. This module goes up the evidence ladder.</p>
-          <h2>1. Single-gene tree (the common start)</h2>
-          <p>Pipeline: MSA (see MSA module) → trim (trimAl) → pick substitution model → build → bootstrap.</p>
-          <pre><code># IQ-TREE: auto model + 1000 bootstrap
-iqtree2 -s aln.trim.fasta -m MFP -B 1000 -T 4</code></pre>
-          <ul>
-            <li><strong>Methods</strong>: neighbor-joining (fast), maximum likelihood (ML, accurate), Bayesian (slow, gives posterior);</li>
-            <li><strong>Bootstrap</strong>: resampling to test node stability; &gt;70% usually trustworthy;</li>
-            <li><strong>Rooting</strong>: use an outgroup to set evolutionary direction.</li>
-          </ul>
-          <h2>2. Multi-gene</h2>
-          <p>A single gene can "lie" via incomplete lineage sorting (ILS). Two strategies:</p>
-          <ul>
-            <li><strong>Concatenation</strong>: stitch gene alignments into a supermatrix and build one ML tree (simple, assumes no conflict);</li>
-            <li><strong>Coalescence (recommended)</strong>: build per-gene trees, then coalesce into a species tree with <strong>ASTRAL</strong> / *BEAST, handling ILS.</li>
-          </ul>
-          <h2>3. Omics-based</h2>
-          <ul>
-            <li><strong>Phylogenetic profiling</strong>: distance from gene presence/absence infers functional links;</li>
-            <li><strong>Orthology matrix</strong>: OrthoFinder orthogroups → interspecies relationships;</li>
-            <li><strong>SNP / variant matrix</strong>: population resequencing gives phylogenies directly (see Genomics).</li>
-          </ul>
-          <h2>4. Cautions when reading trees</h2>
-          <blockquote>Long-branch attraction (LBA): two fast-evolving long branches get wrongly pulled together. Add outgroups, try different models, check bootstrap to expose it.</blockquote>
-          <p>Branch length is amount of change; node support is trustworthiness — don't mistake a pretty tree for a correct one.</p>
-          <p><a href="../index.html">← Back to modules</a></p>
-        </div>
-      </div>
-    </article>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>© <span id="year"></span> 生信自学指南 · 由纯 HTML/CSS/JS 构建，托管于 GitHub Pages</p>
     </div>
-  </footer>
+    
+  </div>
+</article>
 
-  <script src="../assets/js/main.js"></script>
+  </main>
+  <footer class="site-footer">
+  <div class="container">
+    <p>© <span id="year"></span> 生信自学指南 · 托管于 GitHub Pages</p>
+  </div>
+</footer>
+
+  <script src="/bioinformatics_Self-Study-Tutorial/assets/js/main.js"></script>
 </body>
 </html>
