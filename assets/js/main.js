@@ -14,29 +14,7 @@
   if (y) y.textContent = new Date().getFullYear();
 })();
 
-// 中英双语切换
-(function () {
-  var btn = document.getElementById('lang-toggle');
-  function current() {
-    return document.documentElement.getAttribute('data-lang') || 'zh';
-  }
-  function sync() {
-    if (!btn) return;
-    btn.textContent = current() === 'zh' ? 'EN' : '中文';
-  }
-  if (btn) {
-    sync();
-    btn.addEventListener('click', function () {
-      var next = current() === 'zh' ? 'en' : 'zh';
-      document.documentElement.setAttribute('data-lang', next);
-      document.documentElement.setAttribute('lang', next === 'en' ? 'en' : 'zh-CN');
-      try { localStorage.setItem('site-lang', next); } catch (e) {}
-      sync();
-    });
-  }
-})();
-
-// 文章搜索过滤
+// 文章搜索过滤（首页模块卡片）
 (function () {
   var input = document.getElementById('search');
   var list = document.getElementById('post-list');
