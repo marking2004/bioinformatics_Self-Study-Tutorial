@@ -25,6 +25,7 @@
     <nav class="nav-links">
       <a href="/bioinformatics_Self-Study-Tutorial/index.html">首页</a>
       <a href="/bioinformatics_Self-Study-Tutorial/about.html">关于</a>
+      <a href="/bioinformatics_Self-Study-Tutorial/references.html">参考资料</a>
       <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
       
         <a class="lang-toggle" href="/bioinformatics_Self-Study-Tutorial/en/posts/genomics.html" aria-label="切换语言">EN</a>
@@ -78,6 +79,11 @@ bwa mem ref.fa c1.fq c2.fq | samtools sort &gt; sample.bam</code></pre>
             <li><strong>lncRNA</strong>：按长度、外显子结构、编码潜力（CPC2 / CNCI）筛选。</li>
           </ul>
           <blockquote>基因组分析的坑多在"数据不对"：污染、杂合、批次、样品混淆。任何结论前，先做基础 QC 与样本相关性（PCA）检查。</blockquote>
+<h2 id="迷你实战">迷你实战</h2>
+<p>用 samtools 看一个 BAM 的基本统计（先要有比对结果）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>samtools flagstat aln.bam
+</span></span><span style="display:flex;"><span>samtools idxstats aln.bam
+</span></span></code></pre></div><p>观察：<code>flagstat</code> 里 mapped % 表示比对率；<code>idxstats</code> 给出每条参考序列的覆盖深度。处理 FASTA/A 用 <code>seqkit</code> 同理。</p>
 
     </div>
     
