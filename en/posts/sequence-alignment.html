@@ -25,6 +25,7 @@
     <nav class="nav-links">
       <a href="/bioinformatics_Self-Study-Tutorial/en/index.html">Home</a>
       <a href="/bioinformatics_Self-Study-Tutorial/en/about.html">About</a>
+      <a href="/bioinformatics_Self-Study-Tutorial/en/references.html">References</a>
       <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
       
         <a class="lang-toggle" href="/bioinformatics_Self-Study-Tutorial/posts/sequence-alignment.html" aria-label="切换语言">中文</a>
@@ -75,6 +76,11 @@ blastn -query query.fa -db nt -out result.tsv \
           <h2>5. Pairwise vs. database search</h2>
           <p>Searching one sequence against a database (e.g. NCBI blastn) is a <strong>database search</strong>; aligning two sequences directly (Needleman-Wunsch global, Smith-Waterman local) is a <strong>pairwise alignment</strong>, used for fine comparison.</p>
           <blockquote>Alignment balances mismatches against gaps; the gap penalty decides what the final alignment looks like.</blockquote>
+<h2 id="mini-case">Mini-case</h2>
+<p>Align two DNA sequences with nucleotide blastn (build the database first):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>makeblastdb -in subject.fa -dbtype nucl
+</span></span><span style="display:flex;"><span>blastn -query query.fa -db subject.fa -outfmt <span style="color:#ae81ff">6</span>
+</span></span></code></pre></div><p>Observe: the last column <code>evalue</code> — smaller is more significant; identity is in <code>pident</code>. Try NCBI web BLAST first, then batch on the command line.</p>
 
     </div>
     
