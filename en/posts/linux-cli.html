@@ -25,6 +25,7 @@
     <nav class="nav-links">
       <a href="/bioinformatics_Self-Study-Tutorial/en/index.html">Home</a>
       <a href="/bioinformatics_Self-Study-Tutorial/en/about.html">About</a>
+      <a href="/bioinformatics_Self-Study-Tutorial/en/references.html">References</a>
       <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
       
         <a class="lang-toggle" href="/bioinformatics_Self-Study-Tutorial/posts/linux-cli.html" aria-label="切换语言">中文</a>
@@ -86,6 +87,14 @@ grep "GeneA" result.txt | wc -l
 </table>
 <h2>Summary</h2>
 <p>The command line is not scary. Master these five commands and 90% of later pipelines stand on them. Next module we run alignments with them — you will thank the lines you typed today.</p></p>
+<h2 id="mini-case">Mini-case</h2>
+<p>After installing Conda, use <code>seqkit</code> to inspect any FASTA:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>conda create -n bioinfo -c bioconda seqkit
+</span></span><span style="display:flex;"><span>conda activate bioinfo
+</span></span><span style="display:flex;"><span>curl -s <span style="color:#e6db74">&#34;https://rest.uniprot.org/uniprotkb/P04637.fasta&#34;</span> -o demo.fasta
+</span></span><span style="display:flex;"><span>seqkit stat demo.fasta
+</span></span><span style="display:flex;"><span>seqkit fx2tab -l demo.fasta
+</span></span></code></pre></div><p>Observe: <code>P04637</code> is ~393 aa. Swap <code>P04637</code> for any accession to reuse.</p>
 
     </div>
     
