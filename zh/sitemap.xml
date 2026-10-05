@@ -15,6 +15,32 @@
                 href="https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/en/posts/linux-cli.html"
                 />
   </url><url>
+    <loc>https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/posts/molecular-bio.html</loc>
+    <lastmod>2026-10-05T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/posts/molecular-bio.html"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/en/posts/molecular-bio.html"
+                />
+  </url><url>
+    <loc>https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/posts/databases.html</loc>
+    <lastmod>2026-10-05T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/posts/databases.html"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/en/posts/databases.html"
+                />
+  </url><url>
     <loc>https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/posts/sequence-alignment.html</loc>
     <lastmod>2026-10-05T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -28,19 +54,6 @@
                 href="https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/en/posts/sequence-alignment.html"
                 />
   </url><url>
-    <loc>https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/posts/rna-seq.html</loc>
-    <lastmod>2026-10-05T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/posts/rna-seq.html"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/en/posts/rna-seq.html"
-                />
-  </url><url>
     <loc>https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/posts/msa.html</loc>
     <lastmod>2026-10-05T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -52,6 +65,32 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/en/posts/msa.html"
+                />
+  </url><url>
+    <loc>https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/posts/genomics.html</loc>
+    <lastmod>2026-10-05T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/posts/genomics.html"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/en/posts/genomics.html"
+                />
+  </url><url>
+    <loc>https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/posts/rna-seq.html</loc>
+    <lastmod>2026-10-05T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/posts/rna-seq.html"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/en/posts/rna-seq.html"
                 />
   </url><url>
     <loc>https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/posts/protein-analysis.html</loc>
@@ -93,19 +132,6 @@
                 href="https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/en/posts/phylogenetics.html"
                 />
   </url><url>
-    <loc>https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/posts/genomics.html</loc>
-    <lastmod>2026-10-05T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/posts/genomics.html"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/en/posts/genomics.html"
-                />
-  </url><url>
     <loc>https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/posts/multi-omics.html</loc>
     <lastmod>2026-10-05T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -119,19 +145,6 @@
                 href="https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/en/posts/multi-omics.html"
                 />
   </url><url>
-    <loc>https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/posts/molecular-bio.html</loc>
-    <lastmod>2026-10-05T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/posts/molecular-bio.html"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/en/posts/molecular-bio.html"
-                />
-  </url><url>
     <loc>https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/posts/cadd.html</loc>
     <lastmod>2026-10-05T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -143,19 +156,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/en/posts/cadd.html"
-                />
-  </url><url>
-    <loc>https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/posts/databases.html</loc>
-    <lastmod>2026-10-05T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/posts/databases.html"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/en/posts/databases.html"
                 />
   </url><url>
     <loc>https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/posts/software.html</loc>
