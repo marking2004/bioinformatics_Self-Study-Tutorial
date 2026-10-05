@@ -25,6 +25,7 @@
     <nav class="nav-links">
       <a href="/bioinformatics_Self-Study-Tutorial/index.html">首页</a>
       <a href="/bioinformatics_Self-Study-Tutorial/about.html">关于</a>
+      <a href="/bioinformatics_Self-Study-Tutorial/references.html">参考资料</a>
       <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
       
         <a class="lang-toggle" href="/bioinformatics_Self-Study-Tutorial/en/posts/software.html" aria-label="切换语言">EN</a>
@@ -83,6 +84,12 @@
             <li>优先用 conda / 容器装，避免"依赖地狱"。</li>
           </ul>
           <blockquote>工具是手段不是目的。能回答问题的是你的思路，软件只是把思路变成结果。先想清楚要算什么，再去选工具。</blockquote>
+<h2 id="迷你实战">迷你实战</h2>
+<p>用 Conda 装一个工具并跑 <code>--help</code> 确认可用：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>conda create -n t1 -c bioconda fastqc
+</span></span><span style="display:flex;"><span>conda activate t1
+</span></span><span style="display:flex;"><span>fastqc --help
+</span></span></code></pre></div><p>观察：能打印帮助就装好了。Windows 用户优先用 WSL；装不动先 <code>conda clean -a</code> 再试。</p>
 
     </div>
     
