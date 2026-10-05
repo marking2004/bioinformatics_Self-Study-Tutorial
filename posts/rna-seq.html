@@ -13,6 +13,9 @@
         else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
           document.documentElement.setAttribute('data-theme', 'dark');
         }
+        var l = localStorage.getItem('site-lang') || 'zh';
+        document.documentElement.setAttribute('data-lang', l);
+        document.documentElement.setAttribute('lang', l === 'en' ? 'en' : 'zh-CN');
       } catch (e) {}
     })();
   </script>
@@ -23,9 +26,10 @@
     <div class="container nav">
       <a class="brand" href="../index.html"><span class="brand-mark">◢◤</span> 生信自学指南</a>
       <nav class="nav-links">
-        <a href="../index.html">首页</a>
-        <a href="../about.html">关于</a>
+        <a href="../index.html" class="lang-zh">首页</a><a href="../index.html" class="lang-en">Home</a>
+        <a href="../about.html" class="lang-zh">关于</a><a href="../about.html" class="lang-en">About</a>
         <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
+        <button id="lang-toggle" class="lang-toggle" aria-label="切换语言">EN</button>
         <button id="theme-toggle" class="theme-toggle" aria-label="切换主题" title="切换浅色/深色">◐</button>
       </nav>
     </div>
@@ -34,19 +38,18 @@
   <main>
     <article class="article">
       <div class="container">
-        <a class="back-link" href="../index.html">← 返回课程模块</a>
+        <a class="back-link lang-zh" href="../index.html">← 返回课程模块</a>
+        <a class="back-link lang-en" href="../index.html">← Back to modules</a>
         <header class="article-header">
-          <span class="post-tag">组学实战</span>
-          <h1>RNA-seq 实战：从原始读数到差异表达基因</h1>
-          <p class="article-meta">组学 · 约 20 分钟</p>
+          <span class="post-tag lang-zh">组学实战</span><span class="post-tag lang-en">Omics</span>
+          <h1 class="lang-zh">RNA-seq 实战：从原始读数到差异表达基因</h1>
+          <h1 class="lang-en">RNA-seq in Practice: From Reads to Differential Genes</h1>
+          <p class="article-meta lang-zh">组学 · 约 20 分钟</p>
+          <p class="article-meta lang-en">Omics · ~20 min</p>
         </header>
 
-        <div class="article-body">
-          <p>
-            RNA-seq 用来回答一个问题："哪些基因在哪种条件下表达得更多 / 更少？"
-            这一课走通一条精简但真实的流程——从原始读数（fastq）一路到差异表达基因，并画出你的第一张火山图。
-          </p>
-
+        <div class="article-body lang-zh">
+          <p>RNA-seq 用来回答一个问题："哪些基因在哪种条件下表达得更多 / 更少？"这一课走通一条精简但真实的流程——从原始读数（fastq）一路到差异表达基因，并画出你的第一张火山图。</p>
           <h2>1. 流程总览</h2>
           <ul>
             <li>原始读数（fastq）→ <strong>质控</strong>（FastQC）</li>
@@ -54,12 +57,10 @@
             <li>→ <strong>定量</strong>（featureCounts）</li>
             <li>→ <strong>差异分析</strong>（DESeq2）→ 可视化</li>
           </ul>
-
           <h2>2. 质控：先看数据干不干净</h2>
           <pre><code>fastqc sample_R1.fastq.gz sample_R2.fastq.gz
 multiqc .     # 把多个样本的报告汇总成一页</code></pre>
           <p>重点看碱基质量是否随读长衰减、是否有接头污染。脏数据不处理，后面全白做。</p>
-
           <h2>3. 比对与定量</h2>
           <pre><code># 比对到参考基因组，输出排序后的 bam
 hisat2 -x genome_index -1 sample_R1.fq -2 sample_R2.fq \
@@ -67,7 +68,6 @@ hisat2 -x genome_index -1 sample_R1.fq -2 sample_R2.fq \
 
 # 按基因（gtf 注释）计数
 featureCounts -a genes.gtf -o counts.txt sample.bam</code></pre>
-
           <h2>4. 差异表达（R + DESeq2）</h2>
           <pre><code>library(DESeq2)
 dds <- DESeqDataSetFromMatrix(countData, colData, ~ condition)
@@ -75,7 +75,6 @@ dds <- DESeq(dds)
 res <- results(dds, alpha = 0.05)
 summary(res)        # 看看上调 / 下调了多少个基因</code></pre>
           <p><code>alpha = 0.05</code> 是显著性阈值；DESeq2 会自动做归一化和多重检验校正，不用你手动算。</p>
-
           <h2>5. 画出第一张火山图</h2>
           <pre><code>library(ggplot2)
 res$log10p <- -log10(res$padj)
@@ -83,14 +82,48 @@ ggplot(res, aes(log2FoldChange, log10p)) +
   geom_point(alpha = .4) +
   geom_hline(yintercept = -log10(0.05), linetype = "dashed")</code></pre>
           <p>横轴是表达变化倍数（log2），纵轴是显著性（−log10 校正 p 值）。右上 / 右下的点，就是值得追的候选基因。</p>
-
           <h2>小结</h2>
-          <p>
-            一条 RNA-seq 流程里藏着太多细节（批次效应、归一化、多重检验），这一课只画骨架。
-            但只要你亲手跑通一次，以后再读论文、听方法，就不再是听黑话了。
-          </p>
-
+          <p>一条 RNA-seq 流程里藏着太多细节（批次效应、归一化、多重检验），这一课只画骨架。但只要你亲手跑通一次，以后再读论文、听方法，就不再是听黑话了。</p>
           <p><a href="../index.html">← 返回课程模块</a></p>
+        </div>
+
+        <div class="article-body lang-en">
+          <p>RNA-seq answers one question: "which genes are expressed more / less under which condition?" This lesson walks a slim but real pipeline — from raw reads (fastq) to differentially expressed genes, and your first volcano plot.</p>
+          <h2>1. Pipeline overview</h2>
+          <ul>
+            <li>raw reads (fastq) → <strong>QC</strong> (FastQC)</li>
+            <li>→ <strong>align</strong> to a reference genome (HISAT2)</li>
+            <li>→ <strong>quantify</strong> (featureCounts)</li>
+            <li>→ <strong>differential analysis</strong> (DESeq2) → visualize</li>
+          </ul>
+          <h2>2. QC: is the data clean?</h2>
+          <pre><code>fastqc sample_R1.fastq.gz sample_R2.fastq.gz
+multiqc .     # aggregate reports from all samples into one page</code></pre>
+          <p>Watch for per-base quality decay along the read and adapter contamination. Dirty data left untreated ruins everything downstream.</p>
+          <h2>3. Alignment and quantification</h2>
+          <pre><code># align to reference, write sorted bam
+hisat2 -x genome_index -1 sample_R1.fq -2 sample_R2.fq \
+  | samtools sort -o sample.bam
+
+# count reads per gene (gtf annotation)
+featureCounts -a genes.gtf -o counts.txt sample.bam</code></pre>
+          <h2>4. Differential expression (R + DESeq2)</h2>
+          <pre><code>library(DESeq2)
+dds <- DESeqDataSetFromMatrix(countData, colData, ~ condition)
+dds <- DESeq(dds)
+res <- results(dds, alpha = 0.05)
+summary(res)        # how many genes up / down</code></pre>
+          <p><code>alpha = 0.05</code> is the significance cutoff; DESeq2 does normalization and multiple-testing correction for you.</p>
+          <h2>5. Your first volcano plot</h2>
+          <pre><code>library(ggplot2)
+res$log10p <- -log10(res$padj)
+ggplot(res, aes(log2FoldChange, log10p)) +
+  geom_point(alpha = .4) +
+  geom_hline(yintercept = -log10(0.05), linetype = "dashed")</code></pre>
+          <p>x is fold-change (log2), y is significance (−log10 adjusted p). The upper-right / lower-right points are the candidates worth chasing.</p>
+          <h2>Summary</h2>
+          <p>An RNA-seq pipeline hides many details (batch effects, normalization, multiple testing); this lesson only sketches the skeleton. But once you run it yourself, papers and methods talks stop sounding like jargon.</p>
+          <p><a href="../index.html">← Back to modules</a></p>
         </div>
       </div>
     </article>
