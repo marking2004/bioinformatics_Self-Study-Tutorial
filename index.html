@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="light">
+<html lang="zh" data-theme="light">
 <head>
+	<meta name="generator" content="Hugo 0.167.0">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>生信自学指南 · 高校生物信息学课程配套自学资源</title>
-  <meta name="description" content="高校生物信息学课程任课教师维护的配套自学资源：Linux、序列比对、RNA-seq、多序列比对、蛋白质分析、系统发育、基因组学、多组学、分子生物学、药物设计、数据库与软件等可自学的图文教程，中英双语。" />
-  <!-- 防止主题 / 语言闪烁：尽早根据 localStorage 设置 -->
+  <title>生信自学指南</title>
+  <meta name="description" content="高校生物信息学课程配套自学资源：把命令行、序列分析、组学、结构预测拆成可自学的模块。" />
+  <link rel="stylesheet" href="/bioinformatics_Self-Study-Tutorial/assets/css/style.css" />
   <script>
     (function () {
       try {
@@ -14,221 +15,164 @@
         else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
           document.documentElement.setAttribute('data-theme', 'dark');
         }
-        var l = localStorage.getItem('site-lang') || 'zh';
-        document.documentElement.setAttribute('data-lang', l);
-        document.documentElement.setAttribute('lang', l === 'en' ? 'en' : 'zh-CN');
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
   <header class="site-header">
-    <div class="container nav">
-      <a class="brand" href="index.html">
-        <span class="brand-mark">◢◤</span> 生信自学指南
-      </a>
-      <nav class="nav-links">
-        <a href="index.html" class="lang-zh">首页</a><a href="index.html" class="lang-en">Home</a>
-        <a href="about.html" class="lang-zh">关于</a><a href="about.html" class="lang-en">About</a>
-        <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
-        <button id="lang-toggle" class="lang-toggle" aria-label="切换语言">EN</button>
-        <button id="theme-toggle" class="theme-toggle" aria-label="切换主题" title="切换浅色/深色">◐</button>
-      </nav>
-    </div>
-  </header>
+  <div class="container nav">
+    <a class="brand" href="/bioinformatics_Self-Study-Tutorial/index.html"><span class="brand-mark">◢◤</span> 生信自学指南</a>
+    <nav class="nav-links">
+      <a href="/bioinformatics_Self-Study-Tutorial/index.html">首页</a>
+      <a href="/bioinformatics_Self-Study-Tutorial/about.html">关于</a>
+      <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
+      
+        <a class="lang-toggle" href="/bioinformatics_Self-Study-Tutorial/en/index.html" aria-label="切换语言">EN</a>
+      
+      <button id="theme-toggle" class="theme-toggle" aria-label="切换主题" title="切换浅色/深色">◐</button>
+    </nav>
+  </div>
+</header>
 
   <main>
-    <section class="hero">
-      <div class="container">
-        <p class="hero-kicker">Bioinformatics · 课程配套自学资源</p>
-        <h1 class="lang-zh hero-title">生物信息学，从零开始自学</h1>
-        <h1 class="lang-en hero-title">Bioinformatics, self-taught from scratch</h1>
-        <p class="hero-sub lang-zh">
-          我是高校生物信息学课程的任课教师。这里把课堂内容整理成可自学的图文教程、命令示例与参考资料，
-          方便本科生课前预习、课后复习、动手练习——少一点黑话，多一点能直接敲的命令。全站提供中英双语。
-        </p>
-        <p class="hero-sub lang-en">
-          I teach an undergraduate bioinformatics course. Here the lectures are reorganized into illustrated,
-          hands-on tutorials with runnable commands and references — for preview, review and practice.
-          Less jargon, more commands you can actually type. The whole site is bilingual (中文 / English).
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary lang-zh" href="#modules">浏览课程模块 ↓</a>
-          <a class="btn btn-primary lang-en" href="#modules">Browse modules ↓</a>
-          <a class="btn btn-ghost lang-zh" href="about.html">关于本页</a>
-          <a class="btn btn-ghost lang-en" href="about.html">About this site</a>
-        </div>
-      </div>
-    </section>
+    
+<section class="hero">
+  <div class="container">
+    <p class="hero-kicker">Bioinformatics · 课程配套自学资源</p>
+    
+      <h1 class="hero-title">生物信息学，从零开始自学</h1>
+      <p class="hero-sub">面向高校本科生的生物信息学课程配套资料：把命令行、序列分析、组学、结构预测拆成可自学的模块。</p>
+    
+  </div>
+</section>
 
-    <section id="modules" class="posts">
-      <div class="container">
-        <div class="section-head">
-          <h2 class="lang-zh">课程模块</h2>
-          <h2 class="lang-en">Course Modules</h2>
-          <input id="search" class="search" type="search" placeholder="搜索课程模块…" aria-label="搜索课程模块" />
-        </div>
-        <ul class="post-list" id="post-list">
-          <li class="post-card" data-title="Linux 命令行 command line 基础环境 environment 终端 terminal">
-            <a href="posts/linux-cli.html">
-              <span class="post-tag lang-zh">基础环境</span><span class="post-tag lang-en">Environment</span>
-              <h3 class="lang-zh">Linux 与命令行：生信的第一课</h3>
-              <h3 class="lang-en">Linux &amp; the Command Line: Your First Lesson</h3>
-              <p class="post-excerpt lang-zh">终端、文件路径、管道与常用命令——在服务器上跑分析之前，必须跨过的那道门槛。</p>
-              <p class="post-excerpt lang-en">Terminal, file paths, pipes and everyday commands — the threshold you must cross before running any analysis on a server.</p>
-              <p class="post-meta lang-zh">基础 · 约 15 分钟</p>
-              <p class="post-meta lang-en">Basics · ~15 min</p>
-            </a>
-          </li>
-          <li class="post-card" data-title="序列比对 BLAST 同源基因 alignment 序列分析 sequence">
-            <a href="posts/sequence-alignment.html">
-              <span class="post-tag lang-zh">序列分析</span><span class="post-tag lang-en">Sequences</span>
-              <h3 class="lang-zh">序列比对与 BLAST：从一条序列找同源基因</h3>
-              <h3 class="lang-en">Alignment &amp; BLAST: Find Homologs from One Sequence</h3>
-              <p class="post-excerpt lang-zh">用 BLAST 和比对算法，搞懂"两条序列有多像"是怎么算出来的，以及 E 值意味着什么。</p>
-              <p class="post-excerpt lang-en">How BLAST and alignment algorithms compute similarity, and what the E-value really means.</p>
-              <p class="post-meta lang-zh">序列 · 约 12 分钟</p>
-              <p class="post-meta lang-en">Sequences · ~12 min</p>
-            </a>
-          </li>
-          <li class="post-card" data-title="RNA-seq 差异表达 转录组 组学实战 rna-seq differential expression transcriptome">
-            <a href="posts/rna-seq.html">
-              <span class="post-tag lang-zh">组学实战</span><span class="post-tag lang-en">Omics</span>
-              <h3 class="lang-zh">RNA-seq 实战：从原始读数到差异表达基因</h3>
-              <h3 class="lang-en">RNA-seq in Practice: From Reads to Differential Genes</h3>
-              <p class="post-excerpt lang-zh">走通一条真实转录组流程：质控、比对、定量、差异分析，并画出你的第一张火山图。</p>
-              <p class="post-excerpt lang-en">A real transcriptome pipeline: QC, alignment, quantification, differential analysis — and your first volcano plot.</p>
-              <p class="post-meta lang-zh">组学 · 约 20 分钟</p>
-              <p class="post-meta lang-en">Omics · ~20 min</p>
-            </a>
-          </li>
-          <li class="post-card" data-title="多序列比对 MSA 可视化 比对 alignment visualization 保守位点 conservation Jalview">
-            <a href="posts/msa.html">
-              <span class="post-tag lang-zh">多序列比对</span><span class="post-tag lang-en">MSA</span>
-              <h3 class="lang-zh">多序列比对与结果可视化</h3>
-              <h3 class="lang-en">Multiple Sequence Alignment &amp; Visualization</h3>
-              <p class="post-excerpt lang-zh">把一堆同源序列对齐，找保守位点、看进化信号，并用 Jalview / Logo 把结果画出来。</p>
-              <p class="post-excerpt lang-en">Align a set of homologs, find conserved positions, read evolutionary signal, and visualize it with Jalview / sequence logos.</p>
-              <p class="post-meta lang-zh">序列 · 约 18 分钟</p>
-              <p class="post-meta lang-en">Sequences · ~18 min</p>
-            </a>
-          </li>
-          <li class="post-card" data-title="蛋白质 序列分析 结构 功能预测 protein structure function prediction alpha fold">
-            <a href="posts/protein-analysis.html">
-              <span class="post-tag lang-zh">蛋白质</span><span class="post-tag lang-en">Proteins</span>
-              <h3 class="lang-zh">蛋白质序列分析、结构与功能预测</h3>
-              <h3 class="lang-en">Protein Sequence Analysis, Structure &amp; Function</h3>
-              <p class="post-excerpt lang-zh">从氨基酸序列出发：理化性质、结构预测（AlphaFold）、结构可视化与功能注释。</p>
-              <p class="post-excerpt lang-en">From an amino-acid sequence: biophysical properties, structure prediction (AlphaFold), visualization and functional annotation.</p>
-              <p class="post-meta lang-zh">蛋白质 · 约 22 分钟</p>
-              <p class="post-meta lang-en">Proteins · ~22 min</p>
-            </a>
-          </li>
-          <li class="post-card" data-title="肽 蛋白质 设计 合理设计 从头设计 protein design de novo RFdiffusion ProteinMPNN">
-            <a href="posts/protein-design.html">
-              <span class="post-tag lang-zh">蛋白质设计</span><span class="post-tag lang-en">Design</span>
-              <h3 class="lang-zh">肽与蛋白质设计：合理设计与从头设计</h3>
-              <h3 class="lang-en">Peptide &amp; Protein Design: Rational &amp; De novo</h3>
-              <p class="post-excerpt lang-zh">改造天然蛋白、设计新肽与新蛋白（含定向进化、RFdiffusion / ProteinMPNN 等从头设计方法）。</p>
-              <p class="post-excerpt lang-en">Modify natural proteins and design new peptides/proteins — including directed evolution and de novo methods (RFdiffusion, ProteinMPNN).</p>
-              <p class="post-meta lang-zh">蛋白质 · 约 20 分钟</p>
-              <p class="post-meta lang-en">Proteins · ~20 min</p>
-            </a>
-          </li>
-          <li class="post-card" data-title="系统发育 进化树 单基因 多基因 组学 phylogeny tree iqtree">
-            <a href="posts/phylogenetics.html">
-              <span class="post-tag lang-zh">系统发育</span><span class="post-tag lang-en">Phylogeny</span>
-              <h3 class="lang-zh">系统发育分析：单基因 / 多基因 / 组学</h3>
-              <h3 class="lang-en">Phylogenetic Analysis: Single / Multi-gene / Omics</h3>
-              <p class="post-excerpt lang-zh">从一棵基因树到物种树：建树方法、自举检验，以及如何用多基因和组学数据提高可靠性。</p>
-              <p class="post-excerpt lang-en">From a gene tree to a species tree: tree-building methods, bootstrap, and how multi-gene / omics data improve reliability.</p>
-              <p class="post-meta lang-zh">进化 · 约 20 分钟</p>
-              <p class="post-meta lang-en">Evolution · ~20 min</p>
-            </a>
-          </li>
-          <li class="post-card" data-title="核酸 基因组学 测序 共线性 基因家族 SNP 小RNA genomics sequencing">
-            <a href="posts/genomics.html">
-              <span class="post-tag lang-zh">基因组学</span><span class="post-tag lang-en">Genomics</span>
-              <h3 class="lang-zh">核酸序列分析与基因组学</h3>
-              <h3 class="lang-en">Nucleic-acid Analysis &amp; Genomics</h3>
-              <p class="post-excerpt lang-zh">测序数据处理、共线性、基因 / 蛋白家族、SNP 与分子标记、遗传多样性、各类小 RNA 分析。</p>
-              <p class="post-excerpt lang-en">Sequencing data, synteny, gene/protein families, SNPs &amp; markers, diversity, and various small-RNA analyses.</p>
-              <p class="post-meta lang-zh">组学 · 约 25 分钟</p>
-              <p class="post-meta lang-en">Omics · ~25 min</p>
-            </a>
-          </li>
-          <li class="post-card" data-title="多组学 GWAS KEGG 通路 基因定位 代谢 multi-omics">
-            <a href="posts/multi-omics.html">
-              <span class="post-tag lang-zh">多组学</span><span class="post-tag lang-en">Multi-omics</span>
-              <h3 class="lang-zh">多组学联合分析：GWAS、通路与基因定位</h3>
-              <h3 class="lang-en">Multi-omics Integration: GWAS, Pathways &amp; Gene Mapping</h3>
-              <p class="post-excerpt lang-zh">把转录组、基因组、代谢组串起来：GWAS、KEGG 通路富集、未知基因定位与机制推断。</p>
-              <p class="post-excerpt lang-en">Link transcriptome, genome and metabolome: GWAS, KEGG enrichment, mapping unknown genes and inferring mechanism.</p>
-              <p class="post-meta lang-zh">整合 · 约 22 分钟</p>
-              <p class="post-meta lang-en">Integration · ~22 min</p>
-            </a>
-          </li>
-          <li class="post-card" data-title="分子生物学 引物设计 载体 CRISPR 基因编辑 primer vector">
-            <a href="posts/molecular-bio.html">
-              <span class="post-tag lang-zh">分子生物学</span><span class="post-tag lang-en">Mol. Bio</span>
-              <h3 class="lang-zh">分子生物学实验：引物、载体与 CRISPR</h3>
-              <h3 class="lang-en">Molecular Biology: Primers, Vectors &amp; CRISPR</h3>
-              <p class="post-excerpt lang-zh">生信如何服务湿实验：引物设计、载体构建、CRISPR 靶点设计与脱靶评估。</p>
-              <p class="post-excerpt lang-en">How bioinformatics serves bench work: primer design, vector construction, CRISPR target &amp; off-target assessment.</p>
-              <p class="post-meta lang-zh">实验 · 约 18 分钟</p>
-              <p class="post-meta lang-en">Bench · ~18 min</p>
-            </a>
-          </li>
-          <li class="post-card" data-title="虚拟筛选 计算机辅助药物设计 CADD 分子对接 docking 药物">
-            <a href="posts/cadd.html">
-              <span class="post-tag lang-zh">药物设计</span><span class="post-tag lang-en">Drug Design</span>
-              <h3 class="lang-zh">虚拟筛选与计算机辅助药物设计</h3>
-              <h3 class="lang-en">Virtual Screening &amp; Computer-aided Drug Design</h3>
-              <p class="post-excerpt lang-zh">从靶点结构到候选分子：分子对接、虚拟筛选、ADMET 与先导优化。</p>
-              <p class="post-excerpt lang-en">From a target structure to candidates: docking, virtual screening, ADMET and lead optimization.</p>
-              <p class="post-meta lang-zh">药物 · 约 20 分钟</p>
-              <p class="post-meta lang-en">Drug · ~20 min</p>
-            </a>
-          </li>
-          <li class="post-card" data-title="数据库 NCBI ENA 查询 下载 在线分析 database">
-            <a href="posts/databases.html">
-              <span class="post-tag lang-zh">数据库</span><span class="post-tag lang-en">Databases</span>
-              <h3 class="lang-zh">常用生物信息数据库简介</h3>
-              <h3 class="lang-en">Common Bioinformatics Databases</h3>
-              <p class="post-excerpt lang-zh">序列、结构、组学、通路等主流数据库的种类、查询、下载、上传与在线分析用法。</p>
-              <p class="post-excerpt lang-en">Major databases for sequences, structures, omics and pathways — how to query, download, submit and analyze online.</p>
-              <p class="post-meta lang-zh">资源 · 约 15 分钟</p>
-              <p class="post-meta lang-en">Resources · ~15 min</p>
-            </a>
-          </li>
-          <li class="post-card" data-title="软件 工具 推荐 Windows 本地 生信软件 tools">
-            <a href="posts/software.html">
-              <span class="post-tag lang-zh">软件工具</span><span class="post-tag lang-en">Software</span>
-              <h3 class="lang-zh">生信软件与本地工具推荐</h3>
-              <h3 class="lang-en">Recommended Bioinformatics Software</h3>
-              <p class="post-excerpt lang-zh">命令行与图形界面工具清单，含 Windows 下可直接用的本地软件，附安装与选型建议。</p>
-              <p class="post-excerpt lang-en">A curated list of CLI and GUI tools, including Windows-native apps, with install and selection tips.</p>
-              <p class="post-meta lang-zh">资源 · 约 15 分钟</p>
-              <p class="post-meta lang-en">Resources · ~15 min</p>
-            </a>
-          </li>
-        </ul>
-        <p id="no-result" class="no-result" hidden>
-          <span class="lang-zh">没有匹配的课程模块。</span><span class="lang-en">No matching module.</span>
-        </p>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>© <span id="year"></span> 生信自学指南 · 由纯 HTML/CSS/JS 构建，托管于 GitHub Pages</p>
-      <p class="footer-sub lang-zh">课程配套自学参考资料 · 欢迎本科生课前预习、课后复习</p>
-      <p class="footer-sub lang-en">Course companion for self-study · for undergraduate preview and review</p>
+<section class="posts">
+  <div class="container">
+    <div class="section-head">
+      <h2>课程模块</h2>
+      <input id="search" class="search" type="search" placeholder="搜索模块…" />
     </div>
-  </footer>
+    <ul id="post-list" class="post-list">
+      
+      <li class="post-card" data-title="Linux 与命令行：生信的第一课 生物信息学分析大多跑在 Linux 服务器上。不会命令行，寸步难行。
+这一课带你认识终端、文件系统，和几个每天都会用到的命令。先别怕——它只是另一种&#39;说话方式&#39;。">
+        <a href="/bioinformatics_Self-Study-Tutorial/posts/linux-cli.html">
+          <span class="post-tag">基础环境</span>
+          <h3>Linux 与命令行：生信的第一课</h3>
+          <p class="post-excerpt">生物信息学分析大多跑在 Linux 服务器上。不会命令行，寸步难行。
+这一课带你认识终端、文件系统，和几个每天都会用到的命令。先别怕——它只是另一种&#39;说话方式&#39;。</p>
+        </a>
+      </li>
+      
+      <li class="post-card" data-title="序列比对与 BLAST：从一条序列找同源基因 比对（alignment）是生物信息学的&#39;语法&#39;。当你拿到一条未知序列，第一件事往往是问：它和已知的谁比较像？这，就是 BLAST 在做的事。">
+        <a href="/bioinformatics_Self-Study-Tutorial/posts/sequence-alignment.html">
+          <span class="post-tag">序列分析</span>
+          <h3>序列比对与 BLAST：从一条序列找同源基因</h3>
+          <p class="post-excerpt">比对（alignment）是生物信息学的&#39;语法&#39;。当你拿到一条未知序列，第一件事往往是问：它和已知的谁比较像？这，就是 BLAST 在做的事。</p>
+        </a>
+      </li>
+      
+      <li class="post-card" data-title="RNA-seq 实战：从原始读数到差异表达基因 RNA-seq 用来回答一个问题：&#39;哪些基因在哪种条件下表达得更多 / 更少？&#39;这一课走通一条精简但真实的流程——从原始读数（fastq）一路到差异表达基因，并画出你的第一张火山图。">
+        <a href="/bioinformatics_Self-Study-Tutorial/posts/rna-seq.html">
+          <span class="post-tag">组学实战</span>
+          <h3>RNA-seq 实战：从原始读数到差异表达基因</h3>
+          <p class="post-excerpt">RNA-seq 用来回答一个问题：&#39;哪些基因在哪种条件下表达得更多 / 更少？&#39;这一课走通一条精简但真实的流程——从原始读数（fastq）一路到差异表达基因，并画出你的第一张火山图。</p>
+        </a>
+      </li>
+      
+      <li class="post-card" data-title="多序列比对与结果可视化 成对比对只看两条序列；多序列比对（MSA）把三条以上同源序列上下对齐，目的是找出跨物种 / 跨家族都保守的列——这些列往往对应功能位点或结构核心。它是系统发育、蛋白家族、基序发现的前提。">
+        <a href="/bioinformatics_Self-Study-Tutorial/posts/msa.html">
+          <span class="post-tag">多序列比对</span>
+          <h3>多序列比对与结果可视化</h3>
+          <p class="post-excerpt">成对比对只看两条序列；多序列比对（MSA）把三条以上同源序列上下对齐，目的是找出跨物种 / 跨家族都保守的列——这些列往往对应功能位点或结构核心。它是系统发育、蛋白家族、基序发现的前提。</p>
+        </a>
+      </li>
+      
+      <li class="post-card" data-title="蛋白质序列分析、结构与功能预测 拿到一条氨基酸序列，能从它身上读出很多事：理化性质、结构、结构域、功能。这一模块把&#39;从序列到结构到功能&#39;的常规路线走一遍。">
+        <a href="/bioinformatics_Self-Study-Tutorial/posts/protein-analysis.html">
+          <span class="post-tag">蛋白质</span>
+          <h3>蛋白质序列分析、结构与功能预测</h3>
+          <p class="post-excerpt">拿到一条氨基酸序列，能从它身上读出很多事：理化性质、结构、结构域、功能。这一模块把&#39;从序列到结构到功能&#39;的常规路线走一遍。</p>
+        </a>
+      </li>
+      
+      <li class="post-card" data-title="肽与蛋白质设计：合理设计与从头设计 分析是&#39;读懂&#39;蛋白质，设计是&#39;写&#39;蛋白质。本模块覆盖两类思路：在天然骨架上改（合理设计 / 定向进化），以及从零生成新骨架（从头设计）。肽设计是其中更轻量、更贴近抗菌 / 结合应用的入口。">
+        <a href="/bioinformatics_Self-Study-Tutorial/posts/protein-design.html">
+          <span class="post-tag">蛋白质设计</span>
+          <h3>肽与蛋白质设计：合理设计与从头设计</h3>
+          <p class="post-excerpt">分析是&#39;读懂&#39;蛋白质，设计是&#39;写&#39;蛋白质。本模块覆盖两类思路：在天然骨架上改（合理设计 / 定向进化），以及从零生成新骨架（从头设计）。肽设计是其中更轻量、更贴近抗菌 / 结合应用的入口。</p>
+        </a>
+      </li>
+      
+      <li class="post-card" data-title="系统发育分析：单基因 / 多基因 / 组学 系统发育回答&#39;谁和谁更近&#39;。但&#39;近&#39;取决于你用哪段证据——一个基因、多个基因，还是全基因组。本模块按证据层次递进。">
+        <a href="/bioinformatics_Self-Study-Tutorial/posts/phylogenetics.html">
+          <span class="post-tag">系统发育</span>
+          <h3>系统发育分析：单基因 / 多基因 / 组学</h3>
+          <p class="post-excerpt">系统发育回答&#39;谁和谁更近&#39;。但&#39;近&#39;取决于你用哪段证据——一个基因、多个基因，还是全基因组。本模块按证据层次递进。</p>
+        </a>
+      </li>
+      
+      <li class="post-card" data-title="核酸序列分析与基因组学 基因组学关心&#39;整条 DNA / 整套序列&#39;能告诉我们什么。本模块把常见的子方向串起来，方便你按需要取用。">
+        <a href="/bioinformatics_Self-Study-Tutorial/posts/genomics.html">
+          <span class="post-tag">基因组学</span>
+          <h3>核酸序列分析与基因组学</h3>
+          <p class="post-excerpt">基因组学关心&#39;整条 DNA / 整套序列&#39;能告诉我们什么。本模块把常见的子方向串起来，方便你按需要取用。</p>
+        </a>
+      </li>
+      
+      <li class="post-card" data-title="多组学联合分析：GWAS、通路与基因定位 单个组学回答一个问题；多组学把&#39;变异—表达—代谢—表型&#39;连成因果链。本模块讲三件最常用的串联：GWAS、通路富集、未知基因定位。">
+        <a href="/bioinformatics_Self-Study-Tutorial/posts/multi-omics.html">
+          <span class="post-tag">多组学</span>
+          <h3>多组学联合分析：GWAS、通路与基因定位</h3>
+          <p class="post-excerpt">单个组学回答一个问题；多组学把&#39;变异—表达—代谢—表型&#39;连成因果链。本模块讲三件最常用的串联：GWAS、通路富集、未知基因定位。</p>
+        </a>
+      </li>
+      
+      <li class="post-card" data-title="分子生物学实验：引物、载体与 CRISPR 生信不只服务计算，也直接服务于 bench。这一模块讲三件&#39;下机前先算一遍&#39;的事，能省大量试错成本。">
+        <a href="/bioinformatics_Self-Study-Tutorial/posts/molecular-bio.html">
+          <span class="post-tag">分子生物学</span>
+          <h3>分子生物学实验：引物、载体与 CRISPR</h3>
+          <p class="post-excerpt">生信不只服务计算，也直接服务于 bench。这一模块讲三件&#39;下机前先算一遍&#39;的事，能省大量试错成本。</p>
+        </a>
+      </li>
+      
+      <li class="post-card" data-title="虚拟筛选与计算机辅助药物设计 计算机辅助药物设计（CADD）用结构和计算，从海量化合物里挑出&#39;值得合成验证&#39;的少数候选。本模块走一条标准链路：靶点 → 对接 → 筛选 → 性质评估。">
+        <a href="/bioinformatics_Self-Study-Tutorial/posts/cadd.html">
+          <span class="post-tag">药物设计</span>
+          <h3>虚拟筛选与计算机辅助药物设计</h3>
+          <p class="post-excerpt">计算机辅助药物设计（CADD）用结构和计算，从海量化合物里挑出&#39;值得合成验证&#39;的少数候选。本模块走一条标准链路：靶点 → 对接 → 筛选 → 性质评估。</p>
+        </a>
+      </li>
+      
+      <li class="post-card" data-title="常用生物信息数据库简介 数据库是生信的&#39;原料库&#39;。本模块按数据类型给你一张地图，并讲清查询、下载、上传和在线分析四件基本操作。">
+        <a href="/bioinformatics_Self-Study-Tutorial/posts/databases.html">
+          <span class="post-tag">数据库</span>
+          <h3>常用生物信息数据库简介</h3>
+          <p class="post-excerpt">数据库是生信的&#39;原料库&#39;。本模块按数据类型给你一张地图，并讲清查询、下载、上传和在线分析四件基本操作。</p>
+        </a>
+      </li>
+      
+      <li class="post-card" data-title="生信软件与本地工具推荐 工具太多反而让人无从下手。这里按&#39;先装什么、各做什么&#39;给一份务实清单，并特别标出 Windows 下能直接用的本地图形工具。">
+        <a href="/bioinformatics_Self-Study-Tutorial/posts/software.html">
+          <span class="post-tag">软件工具</span>
+          <h3>生信软件与本地工具推荐</h3>
+          <p class="post-excerpt">工具太多反而让人无从下手。这里按&#39;先装什么、各做什么&#39;给一份务实清单，并特别标出 Windows 下能直接用的本地图形工具。</p>
+        </a>
+      </li>
+      
+    </ul>
+    <p id="no-result" class="no-result" hidden>没有匹配的课程模块。</p>
+  </div>
+</section>
 
-  <script src="assets/js/main.js"></script>
+  </main>
+  <footer class="site-footer">
+  <div class="container">
+    <p>© <span id="year"></span> 生信自学指南 · 托管于 GitHub Pages</p>
+  </div>
+</footer>
+
+  <script src="/bioinformatics_Self-Study-Tutorial/assets/js/main.js"></script>
 </body>
 </html>
