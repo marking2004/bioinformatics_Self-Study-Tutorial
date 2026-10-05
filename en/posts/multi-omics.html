@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multi-omics Integration: GWAS, Pathways &amp; Gene Mapping · 生信自学指南</title>
+  <meta name="description" content="Course companion for undergraduate bioinformatics: command line, sequence analysis, omics and structure prediction as self-study modules." />
+  <link rel="stylesheet" href="/bioinformatics_Self-Study-Tutorial/assets/css/style.css" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t) document.documentElement.setAttribute('data-theme', t);
+        else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="/bioinformatics_Self-Study-Tutorial/en/index.html"><span class="brand-mark">◢◤</span> 生信自学指南</a>
+    <nav class="nav-links">
+      <a href="/bioinformatics_Self-Study-Tutorial/en/index.html">Home</a>
+      <a href="/bioinformatics_Self-Study-Tutorial/en/about.html">About</a>
+      <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
+      
+        <a class="lang-toggle" href="/bioinformatics_Self-Study-Tutorial/posts/multi-omics.html" aria-label="切换语言">中文</a>
+      
+      <button id="theme-toggle" class="theme-toggle" aria-label="切换主题" title="切换浅色/深色">◐</button>
+    </nav>
+  </div>
+</header>
+
+  <main>
+    
+<article class="article">
+  <div class="container">
+    <a class="back-link" href="/bioinformatics_Self-Study-Tutorial/en/index.html">← Back to modules</a>
+    
+    <header class="article-header">
+      <span class="post-tag">Multi-omics</span>
+      <h1>Multi-omics Integration: GWAS, Pathways &amp; Gene Mapping</h1>
+      <p class="article-meta">Integration · ~22 min</p>
+    </header>
+    <div class="article-body">
+      <p>One omics answers one question; multi-omics connects "variant — expression — metabolism — phenotype" into a causal chain. This module covers three most-used links: GWAS, pathway enrichment, and unknown-gene mapping.</p>
+          <h2>1. GWAS: link variants to traits</h2>
+          <p>Genome-wide association scans which SNPs associate with a trait in a population. With PLINK:</p>
+          <pre><code>plink --bfile genotype --pheno trait.txt \
+  --linear --allow-no-sex --out gwas</code></pre>
+          <ul>
+            <li>Plot a <strong>Manhattan plot</strong> (per-site −log10(p); peaks = significant) and a <strong>QQ plot</strong> (check inflation);</li>
+            <li>Significant hits must be <strong>replicated</strong> in an independent cohort, or they are false positives.</li>
+          </ul>
+          <h2>2. Pathway enrichment: from gene list to mechanism</h2>
+          <p>With a set of differential / significant genes, ask "which pathways are they enriched in". Use clusterProfiler (R) for GO and KEGG:</p>
+          <pre><code>library(clusterProfiler)
+kk &lt;- enrichKEGG(gene = ids, organism = "hsa", pvalueCutoff = 0.05)
+dotplot(kk)</code></pre>
+          <p>KEGG shows metabolic / signaling pathways; GO shows biological process / cellular component / molecular function.</p>
+          <h2>3. Mapping unknown genes</h2>
+          <ul>
+            <li><strong>Positional cloning / QTL</strong>: map a trait to a chromosomal interval, then narrow candidates;</li>
+            <li><strong>eQTL</strong>: SNP–expression association bridges "significant locus → which gene is affected";</li>
+            <li><strong>Colocalization</strong>: if a GWAS peak overlaps an eQTL peak, it strongly suggests that gene is the mechanistic mediator.</li>
+          </ul>
+          <h2>4. One picture that connects them</h2>
+          <p>GWAS finds "where the signal is" → eQTL / expression points "which gene" → KEGG says "which pathway" → experiment confirms. Multi-omics is not piling data; it is using different evidence to corroborate and shrink the hypothesis space.</p>
+          <blockquote>The most dangerous error in multi-omics is "correlation as causation". A significant SNP ≠ the gene it regulates is the mechanism gene — expression, interaction and function experiments are still needed.</blockquote>
+
+    </div>
+    
+  </div>
+</article>
+
+  </main>
+  <footer class="site-footer">
+  <div class="container">
+    <p>© <span id="year"></span> 生信自学指南 · 托管于 GitHub Pages</p>
+  </div>
+</footer>
+
+  <script src="/bioinformatics_Self-Study-Tutorial/assets/js/main.js"></script>
+</body>
+</html>
