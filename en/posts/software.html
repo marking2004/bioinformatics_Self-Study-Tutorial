@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recommended Bioinformatics Software · 生信自学指南</title>
+  <meta name="description" content="Course companion for undergraduate bioinformatics: command line, sequence analysis, omics and structure prediction as self-study modules." />
+  <link rel="stylesheet" href="/bioinformatics_Self-Study-Tutorial/assets/css/style.css" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t) document.documentElement.setAttribute('data-theme', t);
+        else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="/bioinformatics_Self-Study-Tutorial/en/index.html"><span class="brand-mark">◢◤</span> 生信自学指南</a>
+    <nav class="nav-links">
+      <a href="/bioinformatics_Self-Study-Tutorial/en/index.html">Home</a>
+      <a href="/bioinformatics_Self-Study-Tutorial/en/about.html">About</a>
+      <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
+      
+        <a class="lang-toggle" href="/bioinformatics_Self-Study-Tutorial/posts/software.html" aria-label="切换语言">中文</a>
+      
+      <button id="theme-toggle" class="theme-toggle" aria-label="切换主题" title="切换浅色/深色">◐</button>
+    </nav>
+  </div>
+</header>
+
+  <main>
+    
+<article class="article">
+  <div class="container">
+    <a class="back-link" href="/bioinformatics_Self-Study-Tutorial/en/index.html">← Back to modules</a>
+    
+    <header class="article-header">
+      <span class="post-tag">Software</span>
+      <h1>Recommended Bioinformatics Software</h1>
+      <p class="article-meta">Resources · ~15 min</p>
+    </header>
+    <div class="article-body">
+      <p>Too many tools paralyze. Here is a pragmatic list of "what to install first and what each does", with Windows-native GUI tools flagged.</p>
+          <h2>1. Install first: the base environment</h2>
+          <ul>
+            <li><strong>WSL2 (Windows)</strong>: run Linux CLI on Windows — home of most bioinformatics tools;</li>
+            <li><strong>R + RStudio</strong>: stats &amp; visualization (DESeq2, ggplot2, clusterProfiler);</li>
+            <li><strong>Python + (Ana)Conda</strong>: Biopython, pipelines; conda manages dependencies best;</li>
+            <li><strong>Git</strong>: fetch code, manage versions.</li>
+          </ul>
+          <h2>2. Windows-native GUI tools</h2>
+          <table>
+            <thead><tr><th>Tool</th><th>Use</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>UGENE</td><td>alignment / trees / viz all-in-one</td><td>free, ready to use</td></tr>
+              <tr><td>Jalview</td><td>MSA visualization</td><td>Java, cross-platform</td></tr>
+              <tr><td>MEGA</td><td>tree building (point-and-click)</td><td>teaching-friendly</td></tr>
+              <tr><td>Benchling</td><td>primers / vectors / notebook (web)</td><td>free tier enough</td></tr>
+              <tr><td>Cytoscape</td><td>interaction network viz</td><td>free</td></tr>
+              <tr><td>FigTree / TreeView</td><td>tree viewer</td><td>lightweight</td></tr>
+              <tr><td>PyMOL</td><td>protein structure</td><td>edu version free</td></tr>
+            </tbody>
+          </table>
+          <p>Paid-but-common: SnapGene (vectors), Geneious (suite), CLC Genomics (pipelines). On a budget, use free alternatives + CLI.</p>
+          <h2>3. CLI workhorses (by module)</h2>
+          <ul>
+            <li>Alignment: BLAST, BWA, minimap2, HISAT2;</li>
+            <li>MSA: MAFFT, ClustalOmega, MUSCLE;</li>
+            <li>Evolution: IQ-TREE, RAxML, ASTRAL;</li>
+            <li>Omics: fastp, fastqc, featureCounts, GATK, vcftools;</li>
+            <li>Drugs: AutoDock Vina, Open Babel.</li>
+          </ul>
+          <h2>4. Selection tips</h2>
+          <ul>
+            <li>Beginners: learn <strong>one GUI tool + one language (R or Python)</strong>, not everything;</li>
+            <li>Different tools may disagree; cross-validate key conclusions;</li>
+            <li>Prefer conda / containers to avoid "dependency hell".</li>
+          </ul>
+          <blockquote>Tools are means, not ends. What answers the question is your thinking; software only turns it into results. Know what to compute before picking the tool.</blockquote>
+
+    </div>
+    
+  </div>
+</article>
+
+  </main>
+  <footer class="site-footer">
+  <div class="container">
+    <p>© <span id="year"></span> 生信自学指南 · 托管于 GitHub Pages</p>
+  </div>
+</footer>
+
+  <script src="/bioinformatics_Self-Study-Tutorial/assets/js/main.js"></script>
+</body>
+</html>
