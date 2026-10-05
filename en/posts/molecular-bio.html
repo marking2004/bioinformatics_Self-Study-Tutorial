@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Molecular Biology: Primers, Vectors &amp; CRISPR · 生信自学指南</title>
+  <meta name="description" content="Course companion for undergraduate bioinformatics: command line, sequence analysis, omics and structure prediction as self-study modules." />
+  <link rel="stylesheet" href="/bioinformatics_Self-Study-Tutorial/assets/css/style.css" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t) document.documentElement.setAttribute('data-theme', t);
+        else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="/bioinformatics_Self-Study-Tutorial/en/index.html"><span class="brand-mark">◢◤</span> 生信自学指南</a>
+    <nav class="nav-links">
+      <a href="/bioinformatics_Self-Study-Tutorial/en/index.html">Home</a>
+      <a href="/bioinformatics_Self-Study-Tutorial/en/about.html">About</a>
+      <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
+      
+        <a class="lang-toggle" href="/bioinformatics_Self-Study-Tutorial/posts/molecular-bio.html" aria-label="切换语言">中文</a>
+      
+      <button id="theme-toggle" class="theme-toggle" aria-label="切换主题" title="切换浅色/深色">◐</button>
+    </nav>
+  </div>
+</header>
+
+  <main>
+    
+<article class="article">
+  <div class="container">
+    <a class="back-link" href="/bioinformatics_Self-Study-Tutorial/en/index.html">← Back to modules</a>
+    
+    <header class="article-header">
+      <span class="post-tag">Mol. Bio</span>
+      <h1>Molecular Biology: Primers, Vectors &amp; CRISPR</h1>
+      <p class="article-meta">Bench · ~18 min</p>
+    </header>
+    <div class="article-body">
+      <p>Bioinformatics serves not only computing but the bench. This module covers three "compute once before the experiment" tasks that save a lot of trial-and-error.</p>
+          <h2>1. Primer design</h2>
+          <ul>
+            <li><strong>PCR primers</strong>: NCBI Primer-BLAST or Primer3; target Tm close (within 5℃), length 18–25 nt, GC 40–60%, product 100–500 bp;</li>
+            <li><strong>Avoid</strong>: self / primer dimers, hairpins, 3′ complementarity;</li>
+            <li><strong>Specificity</strong>: BLAST in the genome to confirm only the target amplifies.</li>
+          </ul>
+          <pre><code># Primer3 can also run on the command line (wrappers like pyPCR)
+primer3_core --input input_seq.txt --output primers.txt</code></pre>
+          <h2>2. Vector construction</h2>
+          <ul>
+            <li><strong>Restriction + ligation</strong>: classic but limited by sites;</li>
+            <li><strong>Gibson / Golden Gate</strong>: seamless multi-fragment assembly; Golden Gate uses Type IIs enzymes for one-pot assembly;</li>
+            <li><strong>Tools</strong>: SnapGene / Benchling for maps and primer planning (Windows builds available).</li>
+          </ul>
+          <h2>3. CRISPR target design and off-target</h2>
+          <ol>
+            <li>Pick targets: <strong>CRISPOR</strong> / <strong>CHOPCHOP</strong> find 20-nt spacers in early exons (PAM e.g. NGG);</li>
+            <li>Score: on-target efficiency (e.g. CRISPOR Doench score);</li>
+            <li>Off-target: <strong>Cas-OFFinder</strong> / CasFinder scan the genome for near-homologs; pick low off-target;</li>
+            <li>Validate: T7E1 / Sanger or deep sequencing for editing efficiency.</li>
+          </ol>
+          <blockquote>On the bench, "computing" is cheap and "doing" is expensive. Primer dimers, reverse-ligated vectors, CRISPR off-targets — pitfalls avoidable in ten minutes at the computer cost a week at the bench.</blockquote>
+
+    </div>
+    
+  </div>
+</article>
+
+  </main>
+  <footer class="site-footer">
+  <div class="container">
+    <p>© <span id="year"></span> 生信自学指南 · 托管于 GitHub Pages</p>
+  </div>
+</footer>
+
+  <script src="/bioinformatics_Self-Study-Tutorial/assets/js/main.js"></script>
+</body>
+</html>
