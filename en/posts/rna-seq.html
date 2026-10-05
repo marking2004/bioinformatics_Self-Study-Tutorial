@@ -25,6 +25,7 @@
     <nav class="nav-links">
       <a href="/bioinformatics_Self-Study-Tutorial/en/index.html">Home</a>
       <a href="/bioinformatics_Self-Study-Tutorial/en/about.html">About</a>
+      <a href="/bioinformatics_Self-Study-Tutorial/en/references.html">References</a>
       <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
       
         <a class="lang-toggle" href="/bioinformatics_Self-Study-Tutorial/posts/rna-seq.html" aria-label="切换语言">中文</a>
@@ -80,6 +81,12 @@ geom_hline(yintercept = -log10(0.05), linetype = &quot;dashed&quot;)</code></pre
 <p>x is fold-change (log2), y is significance (−log10 adjusted p). The upper-right / lower-right points are the candidates worth chasing.</p>
 <h2>Summary</h2>
 <p>An RNA-seq pipeline hides many details (batch effects, normalization, multiple testing); this lesson only sketches the skeleton. But once you run it yourself, papers and methods talks stop sounding like jargon.</p></p>
+<h2 id="mini-case">Mini-case</h2>
+<p>Check quality with fastqc, then quantify with salmon (use your own paired-end data):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>fastqc reads_1.fastq.gz reads_2.fastq.gz
+</span></span><span style="display:flex;"><span>salmon index -t transcriptome.fa -i index
+</span></span><span style="display:flex;"><span>salmon quant -i index -l A -1 reads_1.fastq.gz -2 reads_2.fastq.gz -o quant
+</span></span></code></pre></div><p>Observe: each row of <code>quant/quant.sf</code> gives <code>NumReads</code> / <code>TPM</code> per transcript. Download real SRR data from GEO and run the same pipeline.</p>
 
     </div>
     
