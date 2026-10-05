@@ -25,6 +25,7 @@
     <nav class="nav-links">
       <a href="/bioinformatics_Self-Study-Tutorial/index.html">首页</a>
       <a href="/bioinformatics_Self-Study-Tutorial/about.html">关于</a>
+      <a href="/bioinformatics_Self-Study-Tutorial/references.html">参考资料</a>
       <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
       
         <a class="lang-toggle" href="/bioinformatics_Self-Study-Tutorial/en/posts/rna-seq.html" aria-label="切换语言">EN</a>
@@ -80,6 +81,12 @@ geom_hline(yintercept = -log10(0.05), linetype = &quot;dashed&quot;)</code></pre
 <p>横轴是表达变化倍数（log2），纵轴是显著性（−log10 校正 p 值）。右上 / 右下的点，就是值得追的候选基因。</p>
 <h2>小结</h2>
 <p>一条 RNA-seq 流程里藏着太多细节（批次效应、归一化、多重检验），这一课只画骨架。但只要你亲手跑通一次，以后再读论文、听方法，就不再是听黑话了。</p></p>
+<h2 id="迷你实战">迷你实战</h2>
+<p>用 fastqc 看测序质量，再用 salmon 做定量（示例用你自己的双端数据）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>fastqc reads_1.fastq.gz reads_2.fastq.gz
+</span></span><span style="display:flex;"><span>salmon index -t transcriptome.fa -i index
+</span></span><span style="display:flex;"><span>salmon quant -i index -l A -1 reads_1.fastq.gz -2 reads_2.fastq.gz -o quant
+</span></span></code></pre></div><p>观察：<code>quant/quant.sf</code> 每行的 <code>NumReads</code> / <code>TPM</code> 就是该转录本表达量。真实数据去 GEO 下 SRR 编号后走同一流程。</p>
 
     </div>
     
