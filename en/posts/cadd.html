@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Virtual Screening &amp; Computer-aided Drug Design · 生信自学指南</title>
+  <meta name="description" content="Course companion for undergraduate bioinformatics: command line, sequence analysis, omics and structure prediction as self-study modules." />
+  <link rel="stylesheet" href="/bioinformatics_Self-Study-Tutorial/assets/css/style.css" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t) document.documentElement.setAttribute('data-theme', t);
+        else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="/bioinformatics_Self-Study-Tutorial/en/index.html"><span class="brand-mark">◢◤</span> 生信自学指南</a>
+    <nav class="nav-links">
+      <a href="/bioinformatics_Self-Study-Tutorial/en/index.html">Home</a>
+      <a href="/bioinformatics_Self-Study-Tutorial/en/about.html">About</a>
+      <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
+      
+        <a class="lang-toggle" href="/bioinformatics_Self-Study-Tutorial/posts/cadd.html" aria-label="切换语言">中文</a>
+      
+      <button id="theme-toggle" class="theme-toggle" aria-label="切换主题" title="切换浅色/深色">◐</button>
+    </nav>
+  </div>
+</header>
+
+  <main>
+    
+<article class="article">
+  <div class="container">
+    <a class="back-link" href="/bioinformatics_Self-Study-Tutorial/en/index.html">← Back to modules</a>
+    
+    <header class="article-header">
+      <span class="post-tag">Drug Design</span>
+      <h1>Virtual Screening &amp; Computer-aided Drug Design</h1>
+      <p class="article-meta">Drug · ~20 min</p>
+    </header>
+    <div class="article-body">
+      <p>Computer-aided drug design (CADD) uses structure and computation to pick a few "worth synthesizing" candidates from a huge chemical space. This module follows a standard chain: target → docking → screening → property check.</p>
+          <h2>1. Prepare the target structure</h2>
+          <ul>
+            <li>Get the protein from PDB / AlphaFold DB, strip water, add hydrogens, fix side chains (PyMOL / ChimeraX);</li>
+            <li>Define the <strong>binding pocket</strong>: known ligand position, homologous structure, or SiteMap / fpocket prediction.</li>
+          </ul>
+          <h2>2. Molecular docking (core)</h2>
+          <p>Fit small molecules into the pocket and score binding. <strong>AutoDock Vina</strong> is free and fast:</p>
+          <pre><code># prepare receptor/ligand as pdbqt, then dock
+vina --receptor rec.pdbqt --ligand lig.pdbqt \
+     --config box.txt --out out.pdbqt</code></pre>
+          <p>Docking scores are relative rankings, not absolute affinities; different tools on the same protein may disagree — cross-validate.</p>
+          <h2>3. Virtual screening</h2>
+          <p>Batch-dock a large library (ZINC, PubChem, Enamine), keep top scores. Tip: filter for drug-likeness and deduplicate the library before screening to save time.</p>
+          <h2>4. ADMET and drug-likeness</h2>
+          <p>Good binding ≠ druggable. Use <strong>SwissADME</strong> / admetSAR:</p>
+          <ul>
+            <li><strong>Lipinski's rule of five</strong>: MW, logP, H-bond donors/acceptors;</li>
+            <li><strong>ADMET</strong>: absorption, distribution, metabolism, excretion, toxicity;</li>
+            <li><strong>Toxicity / off-target</strong>: hERG, CYP inhibition, etc.</li>
+          </ul>
+          <h2>5. Lead optimization</h2>
+          <p>With a hit, use structure to modify substituents, tune pK and selectivity, cycling "design — synthesize — test". Generative models (e.g. REINVENT) now explore chemical space.</p>
+          <blockquote>Docking is a filter, not a predictor. Top candidates still need wet validation (SPR / enzymatic / cellular); don't read a docking score as an IC50.</blockquote>
+
+    </div>
+    
+  </div>
+</article>
+
+  </main>
+  <footer class="site-footer">
+  <div class="container">
+    <p>© <span id="year"></span> 生信自学指南 · 托管于 GitHub Pages</p>
+  </div>
+</footer>
+
+  <script src="/bioinformatics_Self-Study-Tutorial/assets/js/main.js"></script>
+</body>
+</html>
