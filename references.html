@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>参考资料 · 生信自学指南</title>
+  <title>参考资料 · 生信自学精简指南</title>
   <meta name="description" content="高校生物信息学课程配套自学资源：把命令行、序列分析、组学、结构预测拆成可自学的模块。" />
   <link rel="stylesheet" href="/bioinformatics_Self-Study-Tutorial/assets/css/style.css" />
   <script>
@@ -21,7 +21,7 @@
 <body>
   <header class="site-header">
   <div class="container nav">
-    <a class="brand" href="/bioinformatics_Self-Study-Tutorial/index.html"><span class="brand-mark">◢◤</span> 生信自学指南</a>
+    <a class="brand" href="/bioinformatics_Self-Study-Tutorial/index.html"><span class="brand-mark">◢◤</span> 生信自学精简指南</a>
     <nav class="nav-links">
       <a href="/bioinformatics_Self-Study-Tutorial/index.html">首页</a>
       <a href="/bioinformatics_Self-Study-Tutorial/about.html">关于</a>
@@ -60,6 +60,14 @@
 <li><strong><a href="https://github.com/xuzhougeng">徐洲更（xuzhougeng）</a></strong>：《生信初学者指南》作者，文字通俗、上手快。</li>
 <li><strong><a href="http://www.bio-info-trainee.com/">生信菜鸟团博客</a></strong>：从入门到进阶的推文目录，长期更新的实战笔记。</li>
 </ul>
+<h2 id="补充资源国内高校--数学与数据科学基础">补充资源（国内高校 / 数学与数据科学基础）</h2>
+<p>以下资源多为国内高校教师维护；其中数学与数据科学部分，特别适合补本站的&quot;前置功&quot;：</p>
+<ul>
+<li><strong><a href="https://github.com/xulinpan/bioinfomatics">bioinfomatics（xulinpan）</a></strong>：以抑癌基因 <strong>PTEN</strong> 为真实案例的可复现生信教程，结合公开数据库记录 + Python 流程 + 分章 LaTeX 讲义（共 22 章），串起&quot;数据库 → 序列 → 蛋白 → 结构域 → 比对 → 系统发育 → 结构(AlphaFold) → 变异 → 表达 → 富集 → 网络 → 分子对接 → 分子动力学 → 机器学习 → 多组学&quot;。与本站综合实战思路一致，适合想看一个完整范例的本科生。（注：仓库名拼写为 bioinfomatics。）</li>
+<li><strong><a href="https://github.com/xulinpan/mathds">mathds（xulinpan）</a></strong>：用 <strong>R bookdown</strong> 写的《数据科学数学》本科教材雏形，12 章覆盖函数与模型、向量矩阵、数据几何、概率、统计推断、线性回归、分类、优化、正则化与高维、降维等。生信所需的数学 / 统计底子可在此补。</li>
+<li><strong><a href="https://github.com/xulinpan/dataScience">dataScience（xulinpan）</a></strong>：云南大学机器学习课程讲义（含 R 与 Python 简介、KNN、logistic 回归、ggplot2 等），中文、偏应用，适合作为生信统计 / 机器学习的入门补充。</li>
+<li><strong><a href="https://github.com/h4rvey-g/bioinfo-for-dummies">bioinfo-for-dummies（h4rvey-g）</a></strong>：中文生信入门书《学个毛生信》的 Quarto 源码，面向零基础，含实战、延伸阅读等章节。母语友好，适合先建立直觉。</li>
+</ul>
 <h2 id="使用建议">使用建议</h2>
 <ol start="0">
 <li>代码约定：命令行 / 工具步骤统一用 <strong>bash</strong>（与编程语言无关，因为 BLAST、mafft、samtools 等本质是 shell 程序）；<strong>数据分析、作图、统计</strong>环节同时给 <strong>R 与 Python</strong> 两种写法，任选其一即可。</li>
@@ -77,7 +85,7 @@
   </main>
   <footer class="site-footer">
   <div class="container">
-    <p>© <span id="year"></span> 生信自学指南</p>
+    <p>© <span id="year"></span> 生信自学精简指南</p>
     <p class="build-note">本站基于 Hugo 构建，托管于 GitHub Pages。</p>
   </div>
 </footer>
