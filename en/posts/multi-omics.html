@@ -25,6 +25,7 @@
     <nav class="nav-links">
       <a href="/bioinformatics_Self-Study-Tutorial/en/index.html">Home</a>
       <a href="/bioinformatics_Self-Study-Tutorial/en/about.html">About</a>
+      <a href="/bioinformatics_Self-Study-Tutorial/en/references.html">References</a>
       <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
       
         <a class="lang-toggle" href="/bioinformatics_Self-Study-Tutorial/posts/multi-omics.html" aria-label="切换语言">中文</a>
@@ -70,6 +71,21 @@ dotplot(kk)</code></pre>
           <h2>4. One picture that connects them</h2>
           <p>GWAS finds "where the signal is" → eQTL / expression points "which gene" → KEGG says "which pathway" → experiment confirms. Multi-omics is not piling data; it is using different evidence to corroborate and shrink the hypothesis space.</p>
           <blockquote>The most dangerous error in multi-omics is "correlation as causation". A significant SNP ≠ the gene it regulates is the mechanism gene — expression, interaction and function experiments are still needed.</blockquote>
+<h2 id="mini-case">Mini-case</h2>
+<p>Run a PCA on an expression matrix — <strong>pick either R or Python</strong>:</p>
+<p>R (PCA, factoextra):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(FactoMineR); <span style="color:#a6e22e">library</span>(factoextra)
+</span></span><span style="display:flex;"><span>mat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">read.csv</span>(<span style="color:#e6db74">&#34;expr_matrix.csv&#34;</span>, row.names <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>pca <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">PCA</span>(<span style="color:#a6e22e">t</span>(mat), graph <span style="color:#f92672">=</span> <span style="color:#66d9ef">FALSE</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fviz_pca_ind</span>(pca)
+</span></span></code></pre></div><p>Python (PCA, sklearn):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.decomposition <span style="color:#f92672">import</span> PCA
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span>mat <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;expr_matrix.csv&#34;</span>, index_col <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>pcs <span style="color:#f92672">=</span> PCA(n_components <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>)<span style="color:#f92672">.</span>fit_transform(mat<span style="color:#f92672">.</span>T)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>scatter(pcs[:, <span style="color:#ae81ff">0</span>], pcs[:, <span style="color:#ae81ff">1</span>]); plt<span style="color:#f92672">.</span>show()
+</span></span></code></pre></div><p>Observe: samples cluster by treatment/tissue — a sign of batch or biological effect. For differential expression see the R/Python snippets in each module.</p>
 
     </div>
     
