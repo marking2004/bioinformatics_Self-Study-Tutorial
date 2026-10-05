@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Virtual Screening &amp; Computer-aided Drug Design · 生信自学精简指南</title>
+  <title>Virtual Screening &amp; Computer-aided Drug Design · Concise Bioinfo Self-Study Guide</title>
   <meta name="description" content="Course companion for undergraduate bioinformatics: command line, sequence analysis, omics and structure prediction as self-study modules." />
   <link rel="stylesheet" href="/bioinformatics_Self-Study-Tutorial/assets/css/style.css" />
   <script>
@@ -66,9 +66,20 @@ vina --receptor rec.pdbqt --ligand lig.pdbqt \
           <ul>
             <li><strong>Lipinski's rule of five</strong>: MW, logP, H-bond donors/acceptors;</li>
             <li><strong>ADMET</strong>: absorption, distribution, metabolism, excretion, toxicity;</li>
+            <li><strong>Aqueous solubility / permeability</strong>: e.g. ALOGPS, SwissADME solubility estimates, relevant to oral absorption;</li>
+            <li><strong>Skin sensitization</strong>: e.g. OECD QSAR Toolbox, admetSAR sensitization models, for contact-risk assessment;</li>
             <li><strong>Toxicity / off-target</strong>: hERG, CYP inhibition, etc.</li>
           </ul>
-          <h2>5. Lead optimization</h2>
+          <h2>5. Ligand structure generation &amp; optimization</h2>
+          <p>Once you have a ligand (a SMILES, or downloaded from ZINC / PubChem), turn it into a "dockable 3D structure":</p>
+          <ul>
+            <li><strong>2D → 3D</strong>: generate an initial 3D conformation with Open Babel (<code>obabel mol.smi -O mol.pdb --gen3d</code>) or RDKit;</li>
+            <li><strong>Conformer search / force-field optimization</strong>: MMFF94 (Open Babel / RDKit), UFF — pick a low-energy conformer as docking input;</li>
+            <li><strong>Protonation / tautomers</strong>: cxcalc, Open Babel (<code>--p</code>) or ChemAxon for the dominant form at a given pH;</li>
+            <li><strong>Dedup &amp; drug-likeness prefilter</strong>: keep one low-energy conformer per molecule, filter by Lipinski / PAINS before docking.</li>
+          </ul>
+          <p>A few molecules can be drawn by hand (MarvinSketch, ChemDraw) then converted to 3D; batch generation uses RDKit scripts. This step decides whether the conformer fed to docking is reasonable, and directly affects scores.</p>
+          <h2>6. Lead optimization</h2>
           <p>With a hit, use structure to modify substituents, tune pK and selectivity, cycling "design — synthesize — test". Generative models (e.g. REINVENT) now explore chemical space.</p>
           <blockquote>Docking is a filter, not a predictor. Top candidates still need wet validation (SPR / enzymatic / cellular); don't read a docking score as an IC50.</blockquote>
 <h2 id="mini-case">Mini-case</h2>
@@ -78,6 +89,10 @@ vina --receptor rec.pdbqt --ligand lig.pdbqt \
 </span></span></code></pre></div><p>Observe: results are ranked by binding free energy — more negative is better. For deeper design see the peptide/protein design module.</p>
 
     </div>
+    <nav class="module-nav">
+      <a href="/bioinformatics_Self-Study-Tutorial/en/index.html">← Back to modules</a>
+      <a class="next" href="/bioinformatics_Self-Study-Tutorial/en/posts/software.html">Next module →</a>
+    </nav>
     
   </div>
 </article>
