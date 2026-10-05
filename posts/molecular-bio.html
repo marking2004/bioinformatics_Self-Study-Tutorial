@@ -25,6 +25,7 @@
     <nav class="nav-links">
       <a href="/bioinformatics_Self-Study-Tutorial/index.html">首页</a>
       <a href="/bioinformatics_Self-Study-Tutorial/about.html">关于</a>
+      <a href="/bioinformatics_Self-Study-Tutorial/references.html">参考资料</a>
       <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
       
         <a class="lang-toggle" href="/bioinformatics_Self-Study-Tutorial/en/posts/molecular-bio.html" aria-label="切换语言">EN</a>
@@ -69,6 +70,9 @@ primer3_core --input input_seq.txt --output primers.txt</code></pre>
             <li>验证：T7E1 / Sanger 或深度测序看编辑效率。</li>
           </ol>
           <blockquote>湿实验的"算"很便宜，"做"很贵。引物二聚体、载体反向连、CRISPR 脱靶——这些在电脑上花十分钟能避开的坑，在实验台上要花一周重做。</blockquote>
+<h2 id="迷你实战">迷你实战</h2>
+<p>设计一对 PCR 引物：用在线 Primer3（https://primer3.ut.ee/）或 NCBI Primer-BLAST（https://www.ncbi.nlm.nih.gov/tools/primer-blast/），粘贴目标序列即拿到引物与 Tm。</p>
+<p>观察：好引物一般 18–25 nt、Tm≈55–65℃、无显著二聚体/发夹。本地可用 <code>primer3-py</code> 批量设计。</p>
 
     </div>
     
