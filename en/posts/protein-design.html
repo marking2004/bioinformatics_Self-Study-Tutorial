@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Peptide &amp; Protein Design: Rational &amp; De novo · 生信自学指南</title>
+  <meta name="description" content="Course companion for undergraduate bioinformatics: command line, sequence analysis, omics and structure prediction as self-study modules." />
+  <link rel="stylesheet" href="/bioinformatics_Self-Study-Tutorial/assets/css/style.css" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t) document.documentElement.setAttribute('data-theme', t);
+        else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="/bioinformatics_Self-Study-Tutorial/en/index.html"><span class="brand-mark">◢◤</span> 生信自学指南</a>
+    <nav class="nav-links">
+      <a href="/bioinformatics_Self-Study-Tutorial/en/index.html">Home</a>
+      <a href="/bioinformatics_Self-Study-Tutorial/en/about.html">About</a>
+      <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
+      
+        <a class="lang-toggle" href="/bioinformatics_Self-Study-Tutorial/posts/protein-design.html" aria-label="切换语言">中文</a>
+      
+      <button id="theme-toggle" class="theme-toggle" aria-label="切换主题" title="切换浅色/深色">◐</button>
+    </nav>
+  </div>
+</header>
+
+  <main>
+    
+<article class="article">
+  <div class="container">
+    <a class="back-link" href="/bioinformatics_Self-Study-Tutorial/en/index.html">← Back to modules</a>
+    
+    <header class="article-header">
+      <span class="post-tag">Design</span>
+      <h1>Peptide &amp; Protein Design: Rational &amp; De novo</h1>
+      <p class="article-meta">Proteins · ~20 min</p>
+    </header>
+    <div class="article-body">
+      <p>Analysis "reads" proteins; design "writes" them. This module covers two philosophies: editing a natural scaffold (rational design / directed evolution) and generating new scaffolds from scratch (de novo). Peptide design is the lighter, application-closer entry point (antimicrobial / binding).</p>
+          <h2>1. Rational design (structure- and mechanism-based)</h2>
+          <ul>
+            <li><strong>Site-directed mutagenesis</strong>: change key residues to tune activity, stability or specificity (e.g. Ser→Cys to add a disulfide);</li>
+            <li><strong>Consensus design</strong>: from a family MSA take the "most consensus" residues to improve thermostability;</li>
+            <li><strong>Enzyme engineering</strong>: use structure + MD to estimate mutation effects.</li>
+          </ul>
+          <h2>2. Directed evolution ("irrational" but effective)</h2>
+          <p>No structural knowledge needed: error-prone PCR introduces random mutations → library → screen / select (phage display, yeast display) → enrich over rounds. Good when the mechanism is unclear but function is needed.</p>
+          <h2>3. De novo design</h2>
+          <p>AI now makes "design from nothing" real, in a three-step loop:</p>
+          <ol>
+            <li><strong>Scaffold generation</strong>: RFdiffusion / Chroma generate new folds under constraints;</li>
+            <li><strong>Sequence design</strong>: ProteinMPNN designs amino acids on a given scaffold;</li>
+            <li><strong>Filter &amp; predict</strong>: re-predict with AlphaFold, keep high-pLDDT, self-consistent candidates.</li>
+          </ol>
+          <pre><code># RFdiffusion: generate a binder scaffold for an epitope
+python run_inference.py --pmpnn True \
+  --contig 'B15-25/0 0 25-35' --out_dir designs/</code></pre>
+          <h2>4. Peptide-specific path</h2>
+          <ul>
+            <li><strong>Antimicrobial peptides (AMPs)</strong>: watch hydrophobicity, positive charge, amphipathic helix;</li>
+            <li><strong>Binding / inhibitory peptides</strong>: from phage display panning, or RFdiffusion binder mode;</li>
+            <li><strong>Tools</strong>: PeptideBuilder, HeliQuest, CAMPR4 (AMP DB and prediction).</li>
+          </ul>
+          <h2>5. A workable pipeline</h2>
+          <p>Define function → pick scaffold (edit natural / generate de novo) → design sequence → <em>in silico</em> tests (folding self-consistency, docking, ADMET) → synthesis and experiment.</p>
+          <blockquote>Design is "softer" than analysis: a computationally beautiful protein may not express or fold. Always prepare multiple candidates and validate in parallel — don't bet on a single sequence.</blockquote>
+
+    </div>
+    
+  </div>
+</article>
+
+  </main>
+  <footer class="site-footer">
+  <div class="container">
+    <p>© <span id="year"></span> 生信自学指南 · 托管于 GitHub Pages</p>
+  </div>
+</footer>
+
+  <script src="/bioinformatics_Self-Study-Tutorial/assets/js/main.js"></script>
+</body>
+</html>
