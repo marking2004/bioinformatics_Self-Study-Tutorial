@@ -1,4 +1,4 @@
-# 生信自学指南 · Bioinformatics Self-Study Guide
+# 生信自学精简指南 · Bioinformatics Self-Study Guide
 
 高校生物信息学课程配套的自学资源站，把命令行、序列分析、组学、结构预测等拆成可自学的模块（面向本科生）。
 
