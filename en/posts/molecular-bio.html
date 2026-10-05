@@ -25,6 +25,7 @@
     <nav class="nav-links">
       <a href="/bioinformatics_Self-Study-Tutorial/en/index.html">Home</a>
       <a href="/bioinformatics_Self-Study-Tutorial/en/about.html">About</a>
+      <a href="/bioinformatics_Self-Study-Tutorial/en/references.html">References</a>
       <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
       
         <a class="lang-toggle" href="/bioinformatics_Self-Study-Tutorial/posts/molecular-bio.html" aria-label="切换语言">中文</a>
@@ -69,6 +70,9 @@ primer3_core --input input_seq.txt --output primers.txt</code></pre>
             <li>Validate: T7E1 / Sanger or deep sequencing for editing efficiency.</li>
           </ol>
           <blockquote>On the bench, "computing" is cheap and "doing" is expensive. Primer dimers, reverse-ligated vectors, CRISPR off-targets — pitfalls avoidable in ten minutes at the computer cost a week at the bench.</blockquote>
+<h2 id="mini-case">Mini-case</h2>
+<p>Design a pair of PCR primers: use Primer3 web (<a href="https://primer3.ut.ee/">https://primer3.ut.ee/</a>) or NCBI Primer-BLAST (<a href="https://www.ncbi.nlm.nih.gov/tools/primer-blast/%29;">https://www.ncbi.nlm.nih.gov/tools/primer-blast/);</a> paste the target sequence to get primers and Tm.</p>
+<p>Observe: good primers are ~18-25 nt, Tm ~55-65 C, no strong dimers/hairpins. Locally, batch-design with <code>primer3-py</code>.</p>
 
     </div>
     
