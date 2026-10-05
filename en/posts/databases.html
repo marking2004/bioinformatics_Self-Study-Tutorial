@@ -25,6 +25,7 @@
     <nav class="nav-links">
       <a href="/bioinformatics_Self-Study-Tutorial/en/index.html">Home</a>
       <a href="/bioinformatics_Self-Study-Tutorial/en/about.html">About</a>
+      <a href="/bioinformatics_Self-Study-Tutorial/en/references.html">References</a>
       <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
       
         <a class="lang-toggle" href="/bioinformatics_Self-Study-Tutorial/posts/databases.html" aria-label="切换语言">中文</a>
@@ -80,6 +81,11 @@ esearch -db nucleotide -query "Arabidopsis[orgn]" | \
             <li><strong>Online analysis</strong>: many DBs ship tools — NCBI BLAST, EMBL-EBI MSA / structure prediction, UniProt BLAST and function prediction, no install needed.</li>
           </ul>
           <blockquote>When citing data, always record the <strong>accession</strong> and version. Databases update; write the version so others can reproduce your result.</blockquote>
+<h2 id="mini-case">Mini-case</h2>
+<p>Batch-fetch a gene family's protein sequences with E-utilities:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -s <span style="color:#e6db74">&#34;https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=protein&amp;term=TP53[gene]&amp;retmode=json&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># take the returned ids, then efetch to FASTA</span>
+</span></span></code></pre></div><p>Observe: swap <code>term</code> for any &quot;gene[gene]&quot; or &quot;gene[gene]+organism&quot; combo to batch-fetch; GEO/SRA work the same via <code>esearch</code> + <code>efetch</code>.</p>
 
     </div>
     
