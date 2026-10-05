@@ -25,6 +25,7 @@
     <nav class="nav-links">
       <a href="/bioinformatics_Self-Study-Tutorial/en/index.html">Home</a>
       <a href="/bioinformatics_Self-Study-Tutorial/en/about.html">About</a>
+      <a href="/bioinformatics_Self-Study-Tutorial/en/references.html">References</a>
       <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
       
         <a class="lang-toggle" href="/bioinformatics_Self-Study-Tutorial/posts/phylogenetics.html" aria-label="切换语言">中文</a>
@@ -71,6 +72,10 @@ iqtree2 -s aln.trim.fasta -m MFP -B 1000 -T 4</code></pre>
           <h2>4. Cautions when reading trees</h2>
           <blockquote>Long-branch attraction (LBA): two fast-evolving long branches get wrongly pulled together. Add outgroups, try different models, check bootstrap to expose it.</blockquote>
           <p>Branch length is amount of change; node support is trustworthiness — don't mistake a pretty tree for a correct one.</p>
+<h2 id="mini-case">Mini-case</h2>
+<p>Build a tree from the alignment in step 4 of the Case Study; or prepare your own:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>iqtree2 -s aln.fa -m MFP -bb <span style="color:#ae81ff">1000</span> -nt AUTO
+</span></span></code></pre></div><p>Observe: <code>.treefile</code> is Newick; upload to iTOL to visualize. For multi-gene trees, concatenate several alignments and build one tree (the &quot;multi-gene&quot; layer).</p>
 
     </div>
     
