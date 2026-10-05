@@ -25,6 +25,7 @@
     <nav class="nav-links">
       <a href="/bioinformatics_Self-Study-Tutorial/index.html">首页</a>
       <a href="/bioinformatics_Self-Study-Tutorial/about.html">关于</a>
+      <a href="/bioinformatics_Self-Study-Tutorial/references.html">参考资料</a>
       <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
       
         <a class="lang-toggle" href="/bioinformatics_Self-Study-Tutorial/en/posts/linux-cli.html" aria-label="切换语言">EN</a>
@@ -86,6 +87,14 @@ grep "GeneA" result.txt | wc -l
 </table>
 <h2>小结</h2>
 <p>命令行不可怕。先把这五个命令练熟，后面 90% 的生信流程都建立在这之上。下一模块我们会用这些命令去跑序列比对——到那时你会感谢今天耐心敲下的每一行。</p></p>
+<h2 id="迷你实战">迷你实战</h2>
+<p>装好 Conda 后，用 <code>seqkit</code> 快速看任意 FASTA 的基本信息：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>conda create -n bioinfo -c bioconda seqkit
+</span></span><span style="display:flex;"><span>conda activate bioinfo
+</span></span><span style="display:flex;"><span>curl -s <span style="color:#e6db74">&#34;https://rest.uniprot.org/uniprotkb/P04637.fasta&#34;</span> -o demo.fasta
+</span></span><span style="display:flex;"><span>seqkit stat demo.fasta        <span style="color:#75715e"># 序列条数、总长、最短/最长</span>
+</span></span><span style="display:flex;"><span>seqkit fx2tab -l demo.fasta   <span style="color:#75715e"># 每条序列长度</span>
+</span></span></code></pre></div><p>观察：<code>P04637</code> 长度约 393 aa。把 <code>P04637</code> 换成任意 accession 即可复用这套命令。</p>
 
     </div>
     
