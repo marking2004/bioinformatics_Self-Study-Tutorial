@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="light">
+<html lang="zh" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>多序列比对与结果可视化 · 生信自学指南</title>
-  <meta name="description" content="把同源序列对齐，找保守位点、看进化信号，并用 Jalview / 序列 Logo 把结果画出来。" />
+  <meta name="description" content="高校生物信息学课程配套自学资源：把命令行、序列分析、组学、结构预测拆成可自学的模块。" />
+  <link rel="stylesheet" href="/bioinformatics_Self-Study-Tutorial/assets/css/style.css" />
   <script>
     (function () {
       try {
@@ -13,43 +14,39 @@
         else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
           document.documentElement.setAttribute('data-theme', 'dark');
         }
-        var l = localStorage.getItem('site-lang') || 'zh';
-        document.documentElement.setAttribute('data-lang', l);
-        document.documentElement.setAttribute('lang', l === 'en' ? 'en' : 'zh-CN');
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="../assets/css/style.css" />
 </head>
 <body>
   <header class="site-header">
-    <div class="container nav">
-      <a class="brand" href="../index.html"><span class="brand-mark">◢◤</span> 生信自学指南</a>
-      <nav class="nav-links">
-        <a href="../index.html" class="lang-zh">首页</a><a href="../index.html" class="lang-en">Home</a>
-        <a href="../about.html" class="lang-zh">关于</a><a href="../about.html" class="lang-en">About</a>
-        <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
-        <button id="lang-toggle" class="lang-toggle" aria-label="切换语言">EN</button>
-        <button id="theme-toggle" class="theme-toggle" aria-label="切换主题" title="切换浅色/深色">◐</button>
-      </nav>
-    </div>
-  </header>
+  <div class="container nav">
+    <a class="brand" href="/bioinformatics_Self-Study-Tutorial/index.html"><span class="brand-mark">◢◤</span> 生信自学指南</a>
+    <nav class="nav-links">
+      <a href="/bioinformatics_Self-Study-Tutorial/index.html">首页</a>
+      <a href="/bioinformatics_Self-Study-Tutorial/about.html">关于</a>
+      <a href="https://github.com/marking2004" target="_blank" rel="noopener">GitHub</a>
+      
+        <a class="lang-toggle" href="/bioinformatics_Self-Study-Tutorial/en/posts/msa.html" aria-label="切换语言">EN</a>
+      
+      <button id="theme-toggle" class="theme-toggle" aria-label="切换主题" title="切换浅色/深色">◐</button>
+    </nav>
+  </div>
+</header>
 
   <main>
-    <article class="article">
-      <div class="container">
-        <a class="back-link lang-zh" href="../index.html">← 返回课程模块</a>
-        <a class="back-link lang-en" href="../index.html">← Back to modules</a>
-        <header class="article-header">
-          <span class="post-tag lang-zh">多序列比对</span><span class="post-tag lang-en">MSA</span>
-          <h1 class="lang-zh">多序列比对与结果可视化</h1>
-          <h1 class="lang-en">Multiple Sequence Alignment &amp; Visualization</h1>
-          <p class="article-meta lang-zh">序列 · 约 18 分钟</p>
-          <p class="article-meta lang-en">Sequences · ~18 min</p>
-        </header>
-
-        <div class="article-body lang-zh">
-          <p>成对比对只看两条序列；<strong>多序列比对（MSA）</strong>把三条以上同源序列上下对齐，目的是找出跨物种 / 跨家族都保守的列——这些列往往对应功能位点或结构核心。它是系统发育、蛋白家族、基序发现的前提。</p>
+    
+<article class="article">
+  <div class="container">
+    <a class="back-link" href="/bioinformatics_Self-Study-Tutorial/index.html">← 返回课程模块</a>
+    
+    <header class="article-header">
+      <span class="post-tag">多序列比对</span>
+      <h1>多序列比对与结果可视化</h1>
+      <p class="article-meta">序列 · 约 18 分钟</p>
+    </header>
+    <div class="article-body">
+      <p>成对比对只看两条序列；<strong>多序列比对（MSA）</strong>把三条以上同源序列上下对齐，目的是找出跨物种 / 跨家族都保守的列——这些列往往对应功能位点或结构核心。它是系统发育、蛋白家族、基序发现的前提。</p>
           <h2>1. 一条典型流程</h2>
           <ol>
             <li>收集同源序列：先用模块"序列比对与 BLAST"拿到一批同源蛋白 / 核酸；</li>
@@ -61,84 +58,43 @@
           <h2>2. 在命令行跑 MAFFT</h2>
           <pre><code># --auto 让程序自动选策略；输出比对后的 fasta
 mafft --auto seqs.fasta &gt; aln.fasta
-
-# 序列很多时可并行
-mafft --auto --thread 8 big.fasta &gt; big_aln.fasta</code></pre>
-          <p>替代工具：ClustalOmega（稳）、MUSCLE（快）。在线可用 EMBL-EBI 的 MSA 工具，无需安装。</p>
-          <h2>3. 用 Jalview 可视化</h2>
-          <p>Jalview 是看 MSA 的标准桌面软件（有 Windows 版）：</p>
-          <ul>
-            <li>打开 <code>aln.fasta</code> → 颜色按保守度上色；</li>
-            <li><strong>Conservation</strong> 视图标出高保守列；</li>
-            <li>计算<strong>邻接树</strong>快速看聚类；</li>
-            <li>导出 PNG / EPS 用于论文。</li>
-          </ul>
-          <h2>4. 序列 Logo：把保守性画成图</h2>
-          <p>WebLogo 或 ggseqlogo（R）把每列画成字母高度 = 出现频率的"logo"：越高越保守。</p>
-          <pre><code># R 里用 ggseqlogo
+<h1 id="序列很多时可并行">序列很多时可并行</h1>
+<p>mafft --auto --thread 8 big.fasta &gt; big_aln.fasta</code></pre>
+<p>替代工具：ClustalOmega（稳）、MUSCLE（快）。在线可用 EMBL-EBI 的 MSA 工具，无需安装。</p>
+<h2>3. 用 Jalview 可视化</h2>
+<p>Jalview 是看 MSA 的标准桌面软件（有 Windows 版）：</p>
+<ul>
+<li>打开 <code>aln.fasta</code> → 颜色按保守度上色；</li>
+<li><strong>Conservation</strong> 视图标出高保守列；</li>
+<li>计算<strong>邻接树</strong>快速看聚类；</li>
+<li>导出 PNG / EPS 用于论文。</li>
+</ul>
+<h2>4. 序列 Logo：把保守性画成图</h2>
+<p>WebLogo 或 ggseqlogo（R）把每列画成字母高度 = 出现频率的&quot;logo&quot;：越高越保守。</p>
+<pre><code># R 里用 ggseqlogo
 library(ggseqlogo)
-p &lt;- ggseqlogo(sequences, method = "bits")
+p &lt;- ggseqlogo(sequences, method = &quot;bits&quot;)
 plot(p)</code></pre>
-          <h2>5. 怎么读结果</h2>
-          <ul>
-            <li><strong>全保守列</strong>：高度可能是活性中心或结合位点；</li>
-            <li><strong>成块插入 / 缺失</strong>：常是柔性环区，比对不可靠，谨慎解读；</li>
-            <li><strong>半保守（如 K/R 互换）</strong>：功能保留但序列变化。</li>
-          </ul>
-          <blockquote>MSA 的质量决定下游一切。低相似度的远缘序列强行对齐，会得到"假保守"。比对后一定用眼看一下，别全信软件。</blockquote>
-          <p><a href="../index.html">← 返回课程模块</a></p>
-        </div>
+<h2>5. 怎么读结果</h2>
+<ul>
+<li><strong>全保守列</strong>：高度可能是活性中心或结合位点；</li>
+<li><strong>成块插入 / 缺失</strong>：常是柔性环区，比对不可靠，谨慎解读；</li>
+<li><strong>半保守（如 K/R 互换）</strong>：功能保留但序列变化。</li>
+</ul>
+<blockquote>MSA 的质量决定下游一切。低相似度的远缘序列强行对齐，会得到&quot;假保守&quot;。比对后一定用眼看一下，别全信软件。</blockquote></p>
 
-        <div class="article-body lang-en">
-          <p>Pairwise alignment compares two sequences; <strong>multiple sequence alignment (MSA)</strong> stacks three or more homologs so you can spot columns conserved across species / families — these often mark functional sites or structural cores. MSA is the prerequisite for phylogenetics, protein families and motif discovery.</p>
-          <h2>1. A typical workflow</h2>
-          <ol>
-            <li>Collect homologs: from the "Alignment &amp; BLAST" module;</li>
-            <li>Deduplicate and unify to FASTA;</li>
-            <li>Run MSA (MAFFT is fast and accurate);</li>
-            <li>Trim low-confidence regions (trimAl);</li>
-            <li>Visualize and interpret (Jalview, sequence logos).</li>
-          </ol>
-          <h2>2. Run MAFFT on the command line</h2>
-          <pre><code># --auto picks a strategy automatically; writes aligned fasta
-mafft --auto seqs.fasta &gt; aln.fasta
-
-# parallelize for many sequences
-mafft --auto --thread 8 big.fasta &gt; big_aln.fasta</code></pre>
-          <p>Alternatives: ClustalOmega (stable), MUSCLE (fast). EMBL-EBI provides a no-install web MSA tool.</p>
-          <h2>3. Visualize with Jalview</h2>
-          <p>Jalview is the standard desktop viewer (has a Windows build):</p>
-          <ul>
-            <li>Open <code>aln.fasta</code> → color by conservation;</li>
-            <li><strong>Conservation</strong> view highlights highly conserved columns;</li>
-            <li>Compute a <strong>neighbor-joining tree</strong> for a quick cluster;</li>
-            <li>Export PNG / EPS for papers.</li>
-          </ul>
-          <h2>4. Sequence logo: conservation as a picture</h2>
-          <p>WebLogo or ggseqlogo (R) draws each column as letters whose height = frequency — taller means more conserved.</p>
-          <pre><code># ggseqlogo in R
-library(ggseqlogo)
-p &lt;- ggseqlogo(sequences, method = "bits")
-plot(p)</code></pre>
-          <h2>5. How to read it</h2>
-          <ul>
-            <li><strong>Fully conserved columns</strong>: likely active sites or binding pockets;</li>
-            <li><strong>Blocks of gaps</strong>: often flexible loops; alignment is unreliable — interpret with care;</li>
-            <li><strong>Semi-conserved (e.g. K/R swap)</strong>: function kept, sequence changed.</li>
-          </ul>
-          <blockquote>MSA quality decides everything downstream. Forcing a distant alignment yields "false conservation". Always eyeball it after aligning — don't trust the software blindly.</blockquote>
-          <p><a href="../index.html">← Back to modules</a></p>
-        </div>
-      </div>
-    </article>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>© <span id="year"></span> 生信自学指南 · 由纯 HTML/CSS/JS 构建，托管于 GitHub Pages</p>
     </div>
-  </footer>
+    
+  </div>
+</article>
 
-  <script src="../assets/js/main.js"></script>
+  </main>
+  <footer class="site-footer">
+  <div class="container">
+    <p>© <span id="year"></span> 生信自学指南 · 托管于 GitHub Pages</p>
+  </div>
+</footer>
+
+  <script src="/bioinformatics_Self-Study-Tutorial/assets/js/main.js"></script>
 </body>
 </html>
