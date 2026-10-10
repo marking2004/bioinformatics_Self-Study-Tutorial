@@ -41,10 +41,10 @@ All titles below are **in-print commercial publications**. This site only provid
 |---|---|---|---|---|
 | 生物信息学实验指导 (Bioinformatics Lab Manual) | Fan Longjiang, Ye Chuyu (eds.) | Science Press (科学出版社) | 2022 | 978-7-03-072304-8 |
 | 生物信息学实验 (Bioinformatics Experiments) | Chen Ming, Yuan Chunhui (eds.) | Science Press (科学出版社) | 2022 | 978-7-03-071689-7 |
-| 生物信息学 (Bioinformatics, 2nd ed.) | Fan Longjiang (ed.) | Science Press (科学出版社) | 2021 | 9787030681010 |
-| 生物信息学 (Bioinformatics, 4th ed.) | Chen Ming (ed.) | Science Press (科学出版社) | — | — |
+| 生物信息学 (Bioinformatics, 2nd ed.) | Fan Longjiang (ed.) | Science Press (科学出版社) | 2021 | 978-7-03-068101-0 |
+| 生物信息学 (Bioinformatics, 4th ed.) | Chen Ming (ed.) | Science Press (科学出版社) | 2022 | 978-7-03-071906-5 |
 | 生物信息学 (Bioinformatics, "101 Plan" core textbook) | Chen Ming, Lü Hui (eds.) | — | — | — |
-| 生物信息学分析实践 (Bioinformatics Analysis in Practice) | Wu Zujian et al. | — | — | — |
+| 生物信息学分析实践 (Bioinformatics Analysis in Practice) | Wu Zujian, Gao Fangluan, Shen Jianguo | Science Press (科学出版社) | 2016 | 978-7-03-027831-9 |
 | 生物信息学 (Bioinformatics) | Wang Jingjing, Cai He | Tsinghua University Press | 2014 | 978-7-302-36241-8 |
 | 生物信息学导论——面向高性能计算的算法与应用 (Introduction to Bioinformatics: Algorithms and Applications for High-Performance Computing) | Wang Yongxian, Wang Zhenghua | Tsinghua University Press | 2011 | 978-7-302-25022-7 |
 | 分子进化与系统发育 (Molecular Evolution and Phylogenetics) | M. Nei, S. Kumar | — | — | — |
