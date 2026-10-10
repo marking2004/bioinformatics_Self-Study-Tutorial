@@ -1,0 +1,29 @@
+baseURL = "https://marking2004.github.io/bioinformatics_Self-Study-Tutorial/"
+title = "生信自学精简指南"
+uglyURLs = true
+defaultContentLanguage = "zh"
+defaultContentLanguageInSubdir = false
+disableAliases = true
+disableKinds = ["taxonomy", "section", "RSS"]
+
+# 多语言：中文为默认（站点根），英文在 /en/ 下
+[languages.zh]
+  locale = "zh-CN"
+  label = "中文"
+  weight = 1
+  params = { description = "高校生物信息学课程配套自学资源：把命令行、序列分析、组学、结构预测拆成可自学的模块。" }
+[languages.en]
+  locale = "en"
+  label = "English"
+  weight = 2
+  params = { description = "Course companion for undergraduate bioinformatics: command line, sequence analysis, omics and structure prediction as self-study modules." }
+
+[params]
+  github = "https://github.com/marking2004"
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[markup.goldmark.extensions]
+  footnotes = false
+  typographer = false

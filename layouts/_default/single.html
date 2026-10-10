@@ -1,0 +1,50 @@
+{{ define "title" }}{{ .Title }} · {{ if eq .Lang "zh" }}生信自学精简指南{{ else }}Concise Bioinfo Self-Study Guide{{ end }}{{ end }}
+{{ define "main" }}
+<article class="{{ if .Section }}article{{ else }}about{{ end }}">
+  <div class="container">
+    {{ if eq .Section "labs" }}
+    <a class="back-link" href="{{ .Site.Home.RelPermalink }}#labs">{{ if eq .Lang "zh" }}← 返回实验列表{{ else }}← Back to labs{{ end }}</a>
+    {{ else }}
+    <a class="back-link" href="{{ .Site.Home.RelPermalink }}">{{ if eq .Lang "zh" }}← 返回课程模块{{ else }}← Back to modules{{ end }}</a>
+    {{ end }}
+    {{ if .Section }}
+    <header class="article-header">
+      <span class="post-tag">{{ .Params.category }}</span>
+      <h1>{{ .Title }}</h1>
+      <p class="article-meta">{{ .Params.meta }}</p>
+    </header>
+    <div class="article-body">
+      {{ .Content }}
+    </div>
+    {{ if eq .Section "posts" }}
+      {{ $slug := .File.TranslationBaseName }}
+      {{ $labs := sort (where (where .Site.RegularPages "Section" "labs") "Params.module" $slug) "Weight" }}
+      {{ with $labs }}
+      <nav class="related-labs">
+        <h2>{{ if eq $.Lang "zh" }}本模块配套实验{{ else }}Labs in this module{{ end }}</h2>
+        <ul>
+          {{ range . }}
+          <li><a href="{{ .RelPermalink }}">{{ .Title }}</a><span class="lab-note">{{ .Params.summary }}</span></li>
+          {{ end }}
+        </ul>
+      </nav>
+      {{ end }}
+    {{ end }}
+    <nav class="module-nav">
+      {{ if eq .Section "labs" }}
+      <a href="{{ .Site.Home.RelPermalink }}#labs">{{ if eq .Lang "zh" }}← 返回实验列表{{ else }}← Back to labs{{ end }}</a>
+      {{ with .PrevInSection }}<a class="next" href="{{ .RelPermalink }}">{{ if eq $.Lang "zh" }}下一实验 →{{ else }}Next lab →{{ end }}</a>{{ end }}
+      {{ else }}
+      <a href="{{ .Site.Home.RelPermalink }}">{{ if eq .Lang "zh" }}← 返回课程模块{{ else }}← Back to modules{{ end }}</a>
+      {{ with .PrevInSection }}<a class="next" href="{{ .RelPermalink }}">{{ if eq $.Lang "zh" }}跳转至下一模块 →{{ else }}Next module →{{ end }}</a>{{ end }}
+      {{ end }}
+    </nav>
+    {{ else }}
+    <h1>{{ .Title }}</h1>
+    <div class="article-body">
+      {{ .Content }}
+    </div>
+    {{ end }}
+  </div>
+</article>
+{{ end }}

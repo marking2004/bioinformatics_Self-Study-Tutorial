@@ -1,0 +1,56 @@
+{{ define "title" }}{{ if eq .Lang "zh" }}生信自学精简指南{{ else }}Concise Bioinfo Self-Study Guide{{ end }}{{ end }}
+{{ define "main" }}
+<section class="hero">
+  <div class="container">
+    <p class="hero-kicker">Bioinformatics · 课程配套自学资源</p>
+    {{ if eq .Lang "zh" }}
+      <h1 class="hero-title">生物信息学，从零开始自学</h1>
+      <p class="hero-sub">面向高校本科生的生物信息学课程配套资料：把命令行、序列分析、组学、结构预测拆成可自学的模块。本资料现仅为基本框架，内容陆续补充丰富中......</p>
+    {{ else }}
+      <h1 class="hero-title">Bioinformatics, self-taught from scratch</h1>
+      <p class="hero-sub">Course companion for undergraduates: command line, sequence analysis, omics and structure prediction, broken into self-study modules. This material is still a basic framework; more content is being added over time…</p>
+    {{ end }}
+  </div>
+</section>
+
+<section class="posts">
+  <div class="container">
+    <div class="section-head">
+      <h2>{{ if eq .Lang "zh" }}课程模块{{ else }}Modules{{ end }}</h2>
+      <input id="search" class="search" type="search" placeholder="{{ if eq .Lang "zh" }}搜索模块…{{ else }}Search modules…{{ end }}" />
+    </div>
+    <ul id="post-list" class="post-list">
+      {{ range sort (where .Site.RegularPages "Section" "posts") "Weight" }}
+      <li class="post-card" data-title="{{ .Title }} {{ .Params.summary }}">
+        <a href="{{ .RelPermalink }}">
+          <span class="post-tag">{{ .Params.category }}</span>
+          <h3>{{ .Title }}</h3>
+          <p class="post-excerpt">{{ .Params.summary }}</p>
+        </a>
+      </li>
+      {{ end }}
+    </ul>
+    <p id="no-result" class="no-result" hidden>{{ if eq .Lang "zh" }}没有匹配的课程模块。{{ else }}No matching module.{{ end }}</p>
+  </div>
+</section>
+
+<section class="posts" id="labs">
+  <div class="container">
+    <div class="section-head">
+      <h2>{{ if eq .Lang "zh" }}实验指导{{ else }}Lab exercises{{ end }}</h2>
+    </div>
+    <p class="section-note">{{ if eq .Lang "zh" }}按"目的 → 准备 → 操作步骤 → 结果判读 → 练习"组织的动手实验，与上方课程模块一一对应。所有工具与数据库均给出官方链接。{{ else }}Hands-on labs organised as "goal → setup → procedure → reading the results → exercises", mapped one-to-one onto the modules above. Every tool and database links to its official site.{{ end }}</p>
+    <ul id="lab-list" class="post-list">
+      {{ range sort (where .Site.RegularPages "Section" "labs") "Weight" }}
+      <li class="post-card" data-title="{{ .Title }} {{ .Params.summary }}">
+        <a href="{{ .RelPermalink }}">
+          <span class="post-tag">{{ .Params.category }}</span>
+          <h3>{{ .Title }}</h3>
+          <p class="post-excerpt">{{ .Params.summary }}</p>
+        </a>
+      </li>
+      {{ end }}
+    </ul>
+  </div>
+</section>
+{{ end }}

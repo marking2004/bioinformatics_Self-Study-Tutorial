@@ -1,0 +1,16 @@
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="{{ .Site.Home.RelPermalink }}"><span class="brand-mark">◢◤</span> {{ if eq .Lang "zh" }}生信自学精简指南{{ else }}Concise Bioinfo Self-Study Guide{{ end }}</a>
+    <nav class="nav-links">
+      <a href="{{ .Site.Home.RelPermalink }}">{{ if eq .Lang "zh" }}首页{{ else }}Home{{ end }}</a>
+      <a href="{{ .Site.Home.RelPermalink }}#labs">{{ if eq .Lang "zh" }}实验指导{{ else }}Labs{{ end }}</a>
+      {{ $about := cond (eq .Lang "zh") "about.html" "en/about.html" }}<a href="{{ $about | relURL }}">{{ if eq .Lang "zh" }}关于{{ else }}About{{ end }}</a>
+      {{ $ref := cond (eq .Lang "zh") "references.html" "en/references.html" }}<a href="{{ $ref | relURL }}">{{ if eq .Lang "zh" }}参考资料{{ else }}References{{ end }}</a>
+      <a href="{{ .Site.Params.github }}" target="_blank" rel="noopener">GitHub</a>
+      {{ range .Translations }}
+        <a class="lang-toggle" href="{{ .RelPermalink }}" aria-label="切换语言">{{ if eq .Lang "zh" }}中文{{ else }}EN{{ end }}</a>
+      {{ end }}
+      <button id="theme-toggle" class="theme-toggle" aria-label="切换主题" title="切换浅色/深色">◐</button>
+    </nav>
+  </div>
+</header>

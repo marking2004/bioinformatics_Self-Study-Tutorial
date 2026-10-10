@@ -1,0 +1,80 @@
+---
+title: "Recommended Software"
+date: "2026-10-05"
+weight: 130
+category: "Software"
+meta: "Resources · ~15 min"
+draft: "false"
+---
+
+<p>Too many tools paralyze. Here is a pragmatic list grouped as "online platforms / local GUI / command-line", with Windows-native GUI tools and both Chinese and international web platforms flagged.</p>
+          <h2>1. Install first: the base environment</h2>
+          <ul>
+            <li><strong>WSL2 (Windows)</strong>: run Linux CLI on Windows — home of most bioinformatics tools;</li>
+            <li><strong>R + RStudio</strong>: stats &amp; visualization (DESeq2, ggplot2, clusterProfiler);</li>
+            <li><strong>Python + (Ana)Conda</strong>: Biopython, pipelines; conda manages dependencies best;</li>
+            <li><strong>Git</strong>: fetch code, manage versions.</li>
+          </ul>
+          <h2>2. Online tools (no install, browser-based)</h2>
+          <p>Run in the browser without setting up an environment — handy for a quick check or teaching demo:</p>
+          <table>
+            <thead><tr><th>Tool</th><th>Use</th><th>Notes / link</th></tr></thead>
+            <tbody>
+              <tr><td>NCBI BLAST</td><td>sequence alignment / homology search</td><td><a href="https://blast.ncbi.nlm.nih.gov/Blast.cgi" target="_blank" rel="noopener">blast.ncbi.nlm.nih.gov</a></td></tr>
+              <tr><td>NCBI COBALT</td><td>conserved-domain alignment of multiple proteins/nucleotides</td><td><a href="https://www.ncbi.nlm.nih.gov/tools/cobalt/" target="_blank" rel="noopener">ncbi.nlm.nih.gov/tools/cobalt</a></td></tr>
+              <tr><td>NCBI CDD</td><td>conserved domain annotation (RPS-BLAST)</td><td><a href="https://www.ncbi.nlm.nih.gov/Structure/cdd/wrpsb.cgi" target="_blank" rel="noopener">ncbi.nlm.nih.gov/Structure/cdd</a></td></tr>
+              <tr><td>NCBI ORF Finder</td><td>predict open reading frames / coding regions</td><td><a href="https://www.ncbi.nlm.nih.gov/orffinder/" target="_blank" rel="noopener">ncbi.nlm.nih.gov/orffinder</a></td></tr>
+              <tr><td>MAFFT online (CBRC, Japan)</td><td>multiple sequence alignment</td><td><a href="https://mafft.cbrc.jp/alignment/server/" target="_blank" rel="noopener">mafft.cbrc.jp/alignment/server</a></td></tr>
+              <tr><td>IQ-TREE web</td><td>tree building (maximum likelihood)</td><td><a href="https://iqtree.h-its.org/" target="_blank" rel="noopener">iqtree.h-its.org</a></td></tr>
+              <tr><td>iTOL</td><td>tree visualization &amp; annotation</td><td><a href="https://itol.embl.de/" target="_blank" rel="noopener">itol.embl.de</a></td></tr>
+              <tr><td>BIOPEP-UWM</td><td>peptide bioactivity prediction (U. Wrocław, Poland)</td><td><a href="https://www.uwm.edu.pl/biochemia/index.php/en/tools/biopp" target="_blank" rel="noopener">uwm.edu.pl/biochemia</a></td></tr>
+            </tbody>
+          </table>
+          <h2>3. Windows-native GUI tools</h2>
+          <table>
+            <thead><tr><th>Tool</th><th>Use</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>UGENE</td><td>alignment / trees / viz all-in-one</td><td>free, ready to use</td></tr>
+              <tr><td>Jalview</td><td>MSA visualization</td><td>Java, cross-platform</td></tr>
+              <tr><td>MEGA</td><td>tree building (point-and-click)</td><td>teaching-friendly</td></tr>
+              <tr><td>Benchling</td><td>primers / vectors / notebook (web)</td><td>free tier enough</td></tr>
+              <tr><td>Cytoscape</td><td>interaction network viz</td><td>free</td></tr>
+              <tr><td>FigTree / TreeView</td><td>tree viewer</td><td>lightweight</td></tr>
+              <tr><td>PyMOL</td><td>protein structure</td><td>edu version free</td></tr>
+              <tr><td>BioEdit</td><td>sequence editor / alignment viewer (classic)</td><td>Windows, lightweight, long unmaintained</td></tr>
+              <tr><td>DNAMAN</td><td>all-in-one sequence analysis (classic)</td><td>Windows, teaching-common</td></tr>
+              <tr><td>DNAStar (Lasergene)</td><td>comprehensive sequence suite (classic)</td><td>Windows, commercial license</td></tr>
+              <tr><td>SnapGene</td><td>molecular cloning / plasmid maps</td><td>common in molecular biology, commercial</td></tr>
+              <tr><td>TBtools</td><td>omics analysis / plotting all-in-one (by C. J. Chen et al.)</td><td>free, Chinese, popular recently</td></tr>
+              <tr><td>PhyloSuite</td><td>phylogeny pipeline (by Dong Zhang et al.)</td><td>free, Chinese, integrates tools</td></tr>
+            </tbody>
+          </table>
+          <p>Paid-but-common: Geneious (suite), CLC Genomics (pipelines). On a budget, use free alternatives + CLI; BioEdit / DNAMAN / DNAStar are older and largely replaced by free tools or CLI, but still appear in older literature and teaching.</p>
+          <h2>4. CLI workhorses (by module)</h2>
+          <ul>
+            <li>Alignment: BLAST, BWA, minimap2, HISAT2;</li>
+            <li>MSA: MAFFT, ClustalOmega, MUSCLE;</li>
+            <li>Evolution: IQ-TREE, RAxML, ASTRAL;</li>
+            <li>Omics: fastp, fastqc, featureCounts, GATK, vcftools;</li>
+            <li>Drugs: AutoDock Vina, Open Babel.</li>
+          </ul>
+          <h2>5. Selection tips</h2>
+          <ul>
+            <li>Beginners: learn <strong>one GUI tool + one language (R or Python)</strong>, not everything;</li>
+            <li>Different tools may disagree; cross-validate key conclusions;</li>
+            <li>Prefer conda / containers to avoid "dependency hell".</li>
+          </ul>
+          <blockquote>Tools are means, not ends. What answers the question is your thinking; software only turns it into results. Know what to compute before picking the tool.</blockquote>
+
+
+## Mini-case
+
+Install a tool with Conda and run `--help` to confirm it works:
+
+```bash
+conda create -n t1 -c bioconda fastqc
+conda activate t1
+fastqc --help
+```
+
+Observe: if it prints help, it's installed. Windows users: prefer WSL; if install fails, `conda clean -a` then retry.
